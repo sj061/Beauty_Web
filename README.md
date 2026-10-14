@@ -15,7 +15,6 @@
     "cushion": [
       {
         "name": "에스쁘아 프로테일러 쿠션 21호",
-        "quantity": 1,
         "openedAt": "2026-10-03",
         "paoMonths": 12,
         "expiresAt": "2028-05-01",
@@ -30,24 +29,12 @@
 | 필드 | 뜻 | 비고 |
 | --- | --- | --- |
 | `name` | 제품명 (브랜드·호수 포함) | 필수 |
-| `quantity` | 개수 | 기본 `1` |
 | `openedAt` | 개봉일 `YYYY-MM-DD` | 미개봉이면 `null` |
 | `paoMonths` | 개봉 후 사용기한 (개월) | 용기의 `12M` 표시 → `12` |
 | `expiresAt` | 유통기한 `YYYY-MM-DD` | |
 | `price` | 가격 (원) | |
 | `store` | 구매처 | |
 
-`name`, `quantity` 외에는 모르면 `null`로 둔다.
-
-같은 제품을 쟁여둔 경우, 개봉일·유통기한이 같은 것끼리는 한 항목으로 묶고 `quantity`에 개수를 적는다.
-상태가 다르면 항목을 나눈다. 예) 쓰고 있는 1개 + 미개봉 2개:
-
-```json
-"lip-tint": [
-  { "name": "롬앤 쥬시래스팅 틴트 06", "quantity": 1, "openedAt": "2026-09-01", "paoMonths": 12, "expiresAt": "2028-03-01", "price": 13000, "store": "올리브영" },
-  { "name": "롬앤 쥬시래스팅 틴트 06", "quantity": 2, "openedAt": null, "paoMonths": 12, "expiresAt": "2028-06-01", "price": 13000, "store": "올리브영" }
-]
-```
-
-제품별 총 개수는 같은 `name` 항목들의 `quantity` 합이다 (위 예시는 3개).
+`name` 외에는 모르면 `null`로 둔다. 같은 제품을 여러 개 가지고 있으면 항목을 개수만큼 넣는다.
+제품마다 개봉일·유통기한이 다르기 때문이고, 개수는 같은 `name`의 항목 수로 센다.
 실제 사용 기한은 `openedAt + paoMonths`와 `expiresAt` 중 빠른 날짜다.
