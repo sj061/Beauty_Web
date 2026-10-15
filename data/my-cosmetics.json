@@ -138,6 +138,48 @@
         "useBy": "2027-10-21",
         "price": null,
         "store": "증정품"
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
       }
     ]
   },
@@ -153,7 +195,9 @@
         "price": null,
         "store": "무신사",
         "tone": null
-      },
+      }
+    ],
+    "prep": [
       {
         "name": "디어달리아 프라임 레이어 스킨 프렙",
         "status": "unopened",
@@ -161,6 +205,17 @@
         "paoMonths": 12,
         "expiresAt": "2028-09-21",
         "useBy": "2028-09-21",
+        "price": null,
+        "store": "증정품",
+        "tone": null
+      },
+      {
+        "name": "쏘내추럴 페이스 프렙 픽서",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-11-03",
+        "useBy": "2028-11-03",
         "price": null,
         "store": "증정품",
         "tone": null
@@ -179,7 +234,7 @@
         "tone": null
       },
       {
-        "name": "디어달리아 PDRN 비비크림 21C 소용량",
+        "name": "디어달리아 PDRN 비비크림 21C",
         "status": "unopened",
         "openedAt": null,
         "paoMonths": 12,
@@ -187,7 +242,8 @@
         "useBy": "2028-06-24",
         "price": null,
         "store": "증정품",
-        "tone": null
+        "tone": null,
+        "memo": "소용량"
       },
       {
         "name": "디어달리아 PDRN 비비크림 21C",
@@ -328,17 +384,6 @@
         "price": null,
         "store": "올리브영",
         "tone": null
-      },
-      {
-        "name": "쏘내추럴 페이스 프렙 픽서",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-11-03",
-        "useBy": "2028-11-03",
-        "price": null,
-        "store": "증정품",
-        "tone": null
       }
     ],
     "eyebrow": [
@@ -354,7 +399,7 @@
         "tone": null
       },
       {
-        "name": "웨이크메이크 내추럴 하드 브로우 펜슬 08 베이지토프",
+        "name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프",
         "status": "unopened",
         "openedAt": null,
         "paoMonths": 24,
@@ -365,7 +410,7 @@
         "tone": null
       },
       {
-        "name": "웨이크메이크 내추럴 하드 브로우 펜슬 08 베이지토프",
+        "name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프",
         "status": "unopened",
         "openedAt": null,
         "paoMonths": 24,
@@ -388,17 +433,6 @@
       },
       {
         "name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프",
-        "status": "in-use",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": null,
-        "useBy": null,
-        "price": null,
-        "store": null,
-        "tone": null
-      },
-      {
-        "name": "투쿨포스쿨 프로타주 펜슬 09 쉬어누드",
         "status": "in-use",
         "openedAt": null,
         "paoMonths": null,
@@ -541,6 +575,17 @@
         "useBy": "2029-05-06",
         "price": null,
         "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "투쿨포스쿨 프로타주 펜슬 09 쉬어누드",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
         "tone": null
       }
     ],
@@ -773,7 +818,7 @@
     ],
     "contour": [
       {
-        "name": "에뛰드 쉐딩스틱",
+        "name": "에뛰드 재창조 메이커 #쿨쉐딩",
         "status": "in-use",
         "openedAt": null,
         "paoMonths": null,
@@ -850,48 +895,6 @@
         "price": null,
         "store": "증정품",
         "tone": null
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
       },
       {
         "name": "3CE 소프트 매트 립스틱 #머머링",
@@ -1057,7 +1060,7 @@
     "brow-razor": [
       {
         "name": "KAI Pretty 눈썹칼",
-        "status": null,
+        "status": "unopened",
         "openedAt": null,
         "paoMonths": null,
         "expiresAt": null,
@@ -1067,7 +1070,7 @@
       },
       {
         "name": "KAI Pretty 눈썹칼",
-        "status": null,
+        "status": "unopened",
         "openedAt": null,
         "paoMonths": null,
         "expiresAt": null,
@@ -1077,7 +1080,7 @@
       },
       {
         "name": "KAI Pretty 눈썹칼",
-        "status": null,
+        "status": "unopened",
         "openedAt": null,
         "paoMonths": null,
         "expiresAt": null,
