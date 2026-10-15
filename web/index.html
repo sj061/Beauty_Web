@@ -52,13 +52,14 @@ summary::-webkit-details-marker{display:none}
 .meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.82rem;color:var(--muted);align-items:center}
 .dot{display:inline-flex;align-items:center;gap:4px}
 .dot::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-.pill{font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.pill{flex:none;white-space:nowrap;font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
 .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.crit{background:var(--crit-soft);color:var(--crit)}
 .units{border-top:1px solid var(--line);margin:0;padding:8px 12px 10px;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:.85rem}
 .units li{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--muted)}
 .units li b{color:var(--fg);font-weight:500}
 .empty{color:var(--muted);text-align:center;padding:24px 0}
 footer{color:var(--muted);font-size:.8rem}
+.zone{font-family:var(--display);font-size:1.25rem;margin:4px 0 -8px;color:var(--fg)}
 </style>
 
 <div class="wrap">
@@ -145,12 +146,18 @@ function match(i){
 function renderList(){
   const el = document.getElementById("list"); const shown = items.filter(match);
   if (!shown.length){ el.innerHTML = `<p class="empty">조건에 맞는 제품이 없어요. 필터를 풀어보세요.</p>`; return; }
-  let html = "";
+  let html = "", lastG = null;
+  const rank = u => ({"in-use":0,"unopened":1,"used-up":3})[u.status] ?? 2;
+  const due = u => u.useBy || u.expiresAt || "9999-12-31";
+  const cmp = (a,b) => rank(a)-rank(b) || due(a).localeCompare(due(b));
   for (const g of Object.keys(CATS)) for (const s of Object.keys(CATS[g].subcategories)){
     const list = shown.filter(i => i.g===g && i.s===s); if (!list.length) continue;
     const byName = new Map(); list.forEach(i => { if(!byName.has(i.name)) byName.set(i.name, []); byName.get(i.name).push(i); });
-    html += `<section class="shelf"><h3>${groupNames[g]!==CATS[g].subcategories[s]?`<span class="group">${groupNames[g]}</span>`:""}${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
-    for (const [name, units] of byName){
+    const sorted = [...byName].map(([n,u]) => [n, u.sort(cmp)]).sort((a,b) => cmp(a[1][0], b[1][0]));
+    if (g!==lastG && groupNames[g]!==CATS[g].subcategories[s]) html += `<h2 class="zone">${esc(groupNames[g])}</h2>`;
+    lastG = g;
+    html += `<section class="shelf"><h3>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
+    for (const [name, units] of sorted){
       const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];
       const nearest = units.filter(u=>u.status!=="used-up").map(u=>u.useBy).filter(Boolean).sort()[0];
