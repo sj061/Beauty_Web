@@ -159,7 +159,7 @@ function renderList(){
           ${duePill(nearest)}</div></summary>
         <ul class="units">${units.map(u => `<li><b>${STATUS[u.status]||"상태 모름"}</b>${
           [u.openedAt&&`개봉 ${u.openedAt}`, u.expiresAt&&`유통기한 ${u.expiresAt}`,
-           u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
+           u.status!=="unopened"&&u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
           || "<span>추가 정보 없음</span>"}</li>`).join("")}</ul></details>`;
     }
     html += `</section>`;
