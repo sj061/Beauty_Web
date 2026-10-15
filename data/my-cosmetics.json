@@ -80,6 +80,43 @@
     ]
   },
   "makeup": {
+    "cushion": [
+      {
+        "name": "퓌 올데이 커버 블랙 쿠션 21N",
+        "status": "in-use",
+        "openedAt": "2026-08-06",
+        "paoMonths": 12,
+        "expiresAt": "2029-05-29",
+        "useBy": "2027-08-06",
+        "price": 28000,
+        "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "퓌 올데이 커버 블랙 쿠션 21N 리필",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-05-29",
+        "useBy": "2029-05-29",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      }
+    ],
+    "powder": [
+      {
+        "name": "바닐라코 프라임 프라이머 피니쉬 파우더",
+        "status": "in-use",
+        "openedAt": "2026-08-01",
+        "paoMonths": null,
+        "expiresAt": "2029-07-24",
+        "useBy": "2029-07-24",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      }
+    ],
     "setting-spray": [
       {
         "name": "쏘내추럴 메이크업 픽서",
