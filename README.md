@@ -2,6 +2,12 @@
 
 내가 가진 화장품(기초/색조)을 카테고리별로 관리하는 웹앱.
 
+## 보기 페이지
+
+- `web/template.html` — 화면 틀. `scripts/build_page.py`가 data를 넣어 `web/index.html`을 만든다.
+- 데이터를 고치면 `python3 scripts/build_page.py`로 다시 만들고 같은 Artifact 링크에 다시 올린다.
+  링크: https://claude.ai/artifact/9YTQ1Gn8SGXzYEbDUX8DqZ
+
 ## 데이터
 
 사용자가 목록을 보낼 때 형식 (한 줄에 제품 하나, 같은 제품이 여러 개면 여러 줄):
