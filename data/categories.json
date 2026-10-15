@@ -17,18 +17,16 @@
       "mist": "미스트",
       "sheet-mask": "시트 마스크팩",
       "wash-off-mask": "워시오프/슬리핑 팩",
-      "sunscreen": "선크림/선케어",
+      "sunscreen": "선케어",
       "lip-care": "립밤/립케어"
     }
   },
   "makeup": {
     "name": "색조",
     "subcategories": {
-      "primer": "프라이머/베이스",
-      "prep": "프렙",
+      "primer": "프라이머/프렙",
       "tone-up": "톤업크림",
-      "foundation": "파운데이션",
-      "cushion": "쿠션",
+      "base": "베이스",
       "concealer": "컨실러",
       "powder": "파우더/팩트",
       "setting-spray": "픽서/세팅 스프레이",

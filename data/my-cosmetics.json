@@ -138,62 +138,6 @@
         "useBy": "2027-10-21",
         "price": null,
         "store": "증정품"
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-09-30",
-        "useBy": "2028-09-30",
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
-      },
-      {
-        "name": "헤라 스컬프트 립 컨실러 #nudist",
-        "status": "in-use",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": null,
-        "useBy": null,
-        "price": null,
-        "store": "증정품",
-        "tone": [
-          "코랄",
-          "굽굽"
-        ]
       }
     ]
   },
@@ -209,9 +153,7 @@
         "price": null,
         "store": "무신사",
         "tone": null
-      }
-    ],
-    "prep": [
+      },
       {
         "name": "디어달리아 프라임 레이어 스킨 프렙",
         "status": "unopened",
@@ -235,7 +177,7 @@
         "tone": null
       }
     ],
-    "foundation": [
+    "base": [
       {
         "name": "디어달리아 PDRN 비비크림 21C",
         "status": "in-use",
@@ -269,9 +211,7 @@
         "price": null,
         "store": "올리브영",
         "tone": null
-      }
-    ],
-    "cushion": [
+      },
       {
         "name": "퓌 올데이 커버 블랙 쿠션 21N",
         "status": "in-use",
@@ -1141,6 +1081,62 @@
         "price": null,
         "store": "올리브영",
         "tone": null
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-09-30",
+        "useBy": "2028-09-30",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
       }
     ]
   },
