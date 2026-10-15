@@ -75,7 +75,7 @@ footer{color:var(--muted);font-size:.8rem}
     <ul id="soon"></ul>
   </section>
   <div class="controls">
-    <input type="search" id="q" placeholder="제품명이나 종류로 찾기 (예: 토너, 마스크팩, 헤라)" aria-label="제품명이나 종류 검색">
+    <input type="search" id="q" placeholder="제품명·종류·상태로 찾기 (예: 토너, 미개봉, 헤라)" aria-label="제품명, 종류, 상태 검색">
     <div class="row" id="groups" role="group" aria-label="대분류"></div>
     <div class="row" id="filters" role="group" aria-label="상태와 톤"></div>
   </div>
@@ -135,7 +135,7 @@ function renderControls(){
   [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
     gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
-  [["in-use","사용중"],["unopened","미개봉"],["used-up","리뷰"],["sample","샘플"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
+  [["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"],["sample","샘플"],["used-up","리뷰"]].forEach(([k,l]) =>
     fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
 }
 
@@ -143,12 +143,13 @@ function match(i){
   if (state.g!=="all" && i.g!==state.g) return false;
   if (state.q){
     const q = state.q.toLowerCase();
-    const hay = [i.name, CATS[i.g].subcategories[i.s], CATS[i.g].parents?.[i.s] || "", i.sample ? "샘플" : ""].join(" ").toLowerCase();
+    const hay = [i.name, CATS[i.g].subcategories[i.s], CATS[i.g].parents?.[i.s] || "", i.sample ? "샘플" : "", STATUS[i.status] || "", i.status==="used-up" ? "리뷰" : ""].join(" ").toLowerCase();
     if (!hay.includes(q)) return false;
   }
   if (state.f.has("sample") && !i.sample) return false;
   const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x] && x!=="sample");
-  if (i.status==="used-up" && !st.includes("used-up")) return false;
+  const qUsed = state.q && ["다 씀","리뷰"].some(w => w.includes(state.q) || state.q.includes(w));
+  if (i.status==="used-up" && !st.includes("used-up") && !qUsed) return false;
   if (st.length && !st.includes(i.status)) return false;
   if (tn.length && !(i.tone||[]).some(t => tn.includes(t))) return false;
   return true;
