@@ -1,173 +1,282 @@
 <title>내 화장대</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
 <style>
-/* Layout: one narrow column like a drawer list — summary, "use soon" strip, filters, then category shelves. */
+/* Layout: a Hollywood vanity — bulb-framed mirror (title, counts, "use soon" notes), countertop filters, lacquered shelves of little product objects, drawers for tools. */
 :root{
-  --bg:#f6f4f7; --surface:#ffffff; --line:#e4dfe8; --fg:#2a2230; --muted:#756a7d;
-  --accent:#8a2f5b; --accent-soft:#f3e3ec;
-  --warn:#a35c00; --warn-soft:#fbefdc; --crit:#b3261e; --crit-soft:#fbe4e2;
-  --coral:#ef7d62; --pink:#e46aa0; --goop:#a07a68;
-  --display:"Gowun Batang",ui-serif,serif;
+  --wall:#efe5ea; --lacquer:#f8f2f4; --frame:#ead8de; --shelf:#e6d0d7; --shelf-edge:#cfb3bc;
+  --ink:#2e2329; --muted:#7c6a73; --brass:#a9844d; --note:#fff7e6; --note-ink:#4a3a2c;
+  --glass-a:#fbfdfe; --glass-b:#e3ebef; --bulb:#fff6dc; --glow:rgba(255,214,140,.55);
+  --obj-line:rgba(46,35,41,.18); --crit:#c2362b; --warn:#c07a10;
+  --coral:#f08a6c; --pink:#ea8db1; --goop:#b5836f;
+  --display:"Hahmlet",ui-serif,"Apple SD Gothic Neo",serif;
   --body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#18141b; --surface:#221d26; --line:#372f3d; --fg:#f0eaf3; --muted:#a99db1;
-  --accent:#e89abd; --accent-soft:#3a2431; --warn:#f0b35a; --warn-soft:#3a2c16; --crit:#ff8a80; --crit-soft:#3d1f1d;
-  --coral:#f59a83; --pink:#f08dbb; --goop:#c49e8b; color-scheme:dark}}
+  --wall:#191317; --lacquer:#241b20; --frame:#33262d; --shelf:#3b2c34; --shelf-edge:#2a1f25;
+  --ink:#f4eaef; --muted:#b09fa8; --brass:#d8b077; --note:#3a3226; --note-ink:#f1e4cf;
+  --glass-a:#2d353b; --glass-b:#1b2126; --bulb:#ffeec2; --glow:rgba(255,200,110,.75);
+  --obj-line:rgba(255,255,255,.22); --crit:#ff8a7e; --warn:#f2b552; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#18141b; --surface:#221d26; --line:#372f3d; --fg:#f0eaf3; --muted:#a99db1;
-  --accent:#e89abd; --accent-soft:#3a2431; --warn:#f0b35a; --warn-soft:#3a2c16; --crit:#ff8a80; --crit-soft:#3d1f1d;
-  --coral:#f59a83; --pink:#f08dbb; --goop:#c49e8b; color-scheme:dark}
+  --wall:#191317; --lacquer:#241b20; --frame:#33262d; --shelf:#3b2c34; --shelf-edge:#2a1f25;
+  --ink:#f4eaef; --muted:#b09fa8; --brass:#d8b077; --note:#3a3226; --note-ink:#f1e4cf;
+  --glass-a:#2d353b; --glass-b:#1b2126; --bulb:#ffeec2; --glow:rgba(255,200,110,.75);
+  --obj-line:rgba(255,255,255,.22); --crit:#ff8a7e; --warn:#f2b552; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
-.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-h1{font-family:var(--display);font-size:1.9rem;margin:0;text-wrap:balance}
-h2{font-size:.78rem;letter-spacing:.08em;color:var(--muted);margin:0;font-weight:600}
+body{background:var(--wall);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 56px}
+.vanity{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
 .num{font-variant-numeric:tabular-nums}
-.summary{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted)}
-.summary b{color:var(--fg);font-weight:600}
-.soon{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
-.soon ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
-.soon li{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
-.soon li span:first-child{min-width:0}
-.controls{display:flex;flex-direction:column;gap:10px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding-block:8px;z-index:2}
-input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg)}
-.row{display:flex;flex-wrap:wrap;gap:6px}
-.chip{font:inherit;font-size:.85rem;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
-.chip:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.shelf{display:flex;flex-direction:column;gap:6px}
-.shelf h3{margin:0;font-size:1rem;display:flex;gap:8px;align-items:baseline}
-.shelf h3 small{color:var(--muted);font-weight:400}
-.group{font-size:.72rem;color:var(--accent);font-weight:600;letter-spacing:.04em}
-details{background:var(--surface);border:1px solid var(--line);border-radius:10px}
-summary{list-style:none;cursor:pointer;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
-summary::-webkit-details-marker{display:none}
-.top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
-.name{min-width:0;font-weight:500}
-.count{flex:none;font-weight:600;color:var(--accent)}
-.meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.82rem;color:var(--muted);align-items:center}
-.dot{display:inline-flex;align-items:center;gap:4px}
-.dot::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c)}
-.pill{font-size:.75rem;padding:1px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
-.pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.crit{background:var(--crit-soft);color:var(--crit)}
-.units{border-top:1px solid var(--line);margin:0;padding:8px 12px 10px;list-style:none;display:flex;flex-direction:column;gap:6px;font-size:.85rem}
-.units li{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--muted)}
-.units li b{color:var(--fg);font-weight:500}
-.empty{color:var(--muted);text-align:center;padding:24px 0}
-footer{color:var(--muted);font-size:.8rem}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+
+/* mirror */
+.mirror{position:relative;background:var(--frame);border-radius:22px 22px 10px 10px;padding:30px 30px 26px}
+.bulbs{position:absolute;display:flex;justify-content:space-between;pointer-events:none}
+.bulbs.top{left:26px;right:26px;top:8px}
+.bulbs.left,.bulbs.right{top:40px;bottom:26px;flex-direction:column;width:14px}
+.bulbs.left{left:8px}.bulbs.right{right:8px}
+.bulb{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--bulb) 60%);
+  box-shadow:0 0 10px 2px var(--glow);animation:on .5s ease-out both;animation-delay:calc(var(--i)*45ms)}
+@keyframes on{from{opacity:.15;box-shadow:none}to{opacity:1}}
+.glass{position:relative;border-radius:14px 14px 6px 6px;padding:26px 22px 22px;overflow:hidden;
+  background:linear-gradient(160deg,var(--glass-a),var(--glass-b));box-shadow:inset 0 0 0 1px var(--obj-line);
+  display:flex;flex-direction:column;gap:18px}
+.glass::before{content:"";position:absolute;inset:-40% auto auto -30%;width:60%;height:180%;transform:rotate(25deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);pointer-events:none}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(2rem,7vw,2.8rem);line-height:1.1;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.counts{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted);font-size:.9rem}
+.counts b{color:var(--ink);font-weight:600}
+.notes{display:flex;flex-wrap:wrap;gap:10px}
+.note{background:var(--note);color:var(--note-ink);padding:9px 11px 10px;border-radius:2px;font-size:.8rem;line-height:1.35;
+  width:150px;box-shadow:0 2px 6px rgba(0,0,0,.12);transform:rotate(var(--r));cursor:pointer;text-align:left;border:0}
+.note b{display:block;font-weight:600;margin-bottom:3px}
+.note .when{color:var(--crit);font-weight:600}
+.note .when.warn{color:var(--warn)}
+.note.calm{cursor:default}
+
+/* countertop */
+.counter{background:var(--lacquer);border-radius:0 0 14px 14px;padding:16px 18px 18px;box-shadow:0 10px 24px -14px rgba(0,0,0,.35);
+  display:flex;flex-direction:column;gap:10px}
+input[type=search]{width:100%;font:inherit;padding:10px 14px;border-radius:999px;border:1px solid var(--obj-line);background:var(--wall);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;padding:4px 12px;border-radius:999px;border:1px solid var(--obj-line);background:transparent;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--lacquer);border-color:var(--ink)}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+
+/* shelves */
+.cabinet{margin-top:22px;background:var(--lacquer);border-radius:14px;padding:6px 0 10px;box-shadow:0 10px 24px -14px rgba(0,0,0,.35)}
+.zone{padding:14px 18px 2px;font-family:var(--display);font-size:1.05rem;font-weight:700;display:flex;gap:8px;align-items:baseline}
+.zone small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted)}
+.shelf{padding:12px 0 0}
+.plate{margin:0 18px 6px;display:inline-flex;gap:6px;align-items:baseline;font-size:.78rem;letter-spacing:.04em;color:var(--brass);font-weight:600;
+  border:1px solid var(--brass);border-radius:3px;padding:1px 8px}
+.row{display:flex;gap:4px;align-items:flex-end;overflow-x:auto;padding:4px 18px 0;scrollbar-width:thin}
+.plank{height:12px;margin:0 10px;background:var(--shelf);border-radius:2px;box-shadow:0 4px 0 var(--shelf-edge),0 10px 14px -8px rgba(0,0,0,.35)}
+.item{flex:none;width:84px;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:0;cursor:pointer}
+.item .lbl{order:2;font-size:.7rem;line-height:1.3;color:var(--muted);text-align:center;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;height:2.6em}
+.obj{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:104px;transition:transform .15s}
+.item:hover .obj,.item:focus-visible .obj{transform:translateY(-4px)}
+.obj span{display:block;box-shadow:inset 0 0 0 1px var(--obj-line)}
+.badge{position:absolute;top:-2px;right:-14px;background:var(--ink);color:var(--lacquer);font-size:.68rem;font-weight:600;border-radius:999px;padding:0 6px;box-shadow:none!important}
+.alert{position:absolute;top:2px;left:-10px;width:9px;height:9px;border-radius:50%;background:var(--crit);box-shadow:0 0 0 2px var(--lacquer)!important}
+.alert.warn{background:var(--warn)}
+.shine{background-image:linear-gradient(100deg,rgba(255,255,255,.55) 0 18%,transparent 30%)}
+/* shapes */
+.bottle .cap{width:18px;height:20px;border-radius:4px 4px 2px 2px;background:var(--metal)}
+.bottle .body{width:40px;height:70px;border-radius:9px 9px 6px 6px;background:var(--c)}
+.jar .cap{width:58px;height:16px;border-radius:5px;background:var(--metal)}
+.jar .body{width:54px;height:36px;border-radius:4px 4px 10px 10px;background:var(--c)}
+.tube .body{width:34px;height:76px;background:var(--c);clip-path:polygon(0 0,100% 0,82% 100%,18% 100%);border-radius:3px}
+.tube .cap{width:22px;height:16px;border-radius:2px 2px 5px 5px;background:var(--metal)}
+.compact .body{width:56px;height:56px;border-radius:50%;background:radial-gradient(circle,var(--c) 0 52%,var(--metal) 54%)}
+.pencil .tip{width:12px;height:16px;background:var(--c);clip-path:polygon(50% 0,100% 100%,0 100%);box-shadow:none!important}
+.pencil .body{width:12px;height:80px;border-radius:0 0 3px 3px;background:var(--metal)}
+.lipstick .tip{width:18px;height:26px;background:var(--c);clip-path:polygon(0 30%,100% 0,100% 100%,0 100%);border-radius:2px;box-shadow:none!important}
+.lipstick .collar{width:22px;height:10px;background:var(--brass)}
+.lipstick .body{width:26px;height:46px;border-radius:3px;background:var(--metal)}
+.wand .cap{width:16px;height:44px;border-radius:5px 5px 2px 2px;background:var(--metal)}
+.wand .body{width:22px;height:44px;border-radius:2px 2px 6px 6px;background:var(--c)}
+.small .body{width:44px;height:30px;border-radius:12px;background:var(--c)}
+.empty{color:var(--muted);text-align:center;padding:30px 16px}
+
+/* drawers */
+.drawers{display:flex;flex-direction:column;gap:8px;padding:14px 10px 4px}
+.drawer{background:var(--frame);border-radius:6px;box-shadow:inset 0 0 0 1px var(--obj-line)}
+.drawer>button{width:100%;background:none;border:0;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600}
+.knob{width:34px;height:8px;border-radius:999px;background:var(--brass)}
+.drawer ul{list-style:none;margin:0;padding:0 16px 14px;display:flex;flex-direction:column;gap:6px;font-size:.88rem}
+.drawer li button{background:none;border:0;padding:0;cursor:pointer;text-align:left}
+
+/* detail sheet */
+.scrim{position:fixed;inset:0;background:rgba(20,12,16,.45);z-index:10}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:11;background:var(--lacquer);border-radius:18px 18px 0 0;max-height:80%;overflow:auto;
+  padding:18px max(18px,env(safe-area-inset-right,0px)) calc(22px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px));
+  box-shadow:0 -10px 30px rgba(0,0,0,.25);animation:up .22s ease-out}
+@keyframes up{from{transform:translateY(30%);opacity:.4}}
+.sheet-in{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.sheet h2{font-family:var(--display);font-size:1.3rem;margin:0;text-wrap:balance}
+.sheet .sub{color:var(--muted);font-size:.85rem;display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.units{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.units li{border-top:1px solid var(--obj-line);padding-top:8px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px;font-size:.88rem}
+.units dt{color:var(--muted)} .units dd{margin:0}
+.close{align-self:flex-end;background:none;border:1px solid var(--obj-line);border-radius:999px;padding:4px 14px;cursor:pointer}
+footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:18px}
+@media (prefers-reduced-motion:reduce){.bulb,.sheet{animation:none}.obj{transition:none}}
 </style>
 
-<div class="wrap">
-  <header style="display:flex;flex-direction:column;gap:8px">
-    <h1>내 화장대</h1>
-    <div class="summary num" id="summary"></div>
-  </header>
-  <section class="soon" aria-labelledby="soon-h">
-    <h2 id="soon-h">곧 써야 할 제품 · 6개월 이내</h2>
-    <ul id="soon"></ul>
+<div class="vanity">
+  <section class="mirror" aria-label="거울">
+    <div class="bulbs top" id="bt"></div><div class="bulbs left" id="bl"></div><div class="bulbs right" id="br"></div>
+    <div class="glass">
+      <h1>내 화장대</h1>
+      <div class="counts num" id="counts"></div>
+      <div class="notes" id="notes" aria-label="곧 써야 할 제품"></div>
+    </div>
   </section>
-  <div class="controls">
-    <input type="search" id="q" placeholder="제품명으로 찾기 (예: 틴트, 헤라)" aria-label="제품명 검색">
-    <div class="row" id="groups" role="group" aria-label="대분류"></div>
-    <div class="row" id="filters" role="group" aria-label="상태와 톤"></div>
+  <div class="counter">
+    <input type="search" id="q" placeholder="찾을 제품 (예: 틴트, 헤라)" aria-label="제품명 검색">
+    <div class="chips" id="groups" role="group" aria-label="대분류"></div>
+    <div class="chips" id="filters" role="group" aria-label="상태와 톤"></div>
   </div>
-  <main id="list" style="display:flex;flex-direction:column;gap:22px"></main>
+  <div class="cabinet" id="cabinet"></div>
   <footer id="foot"></footer>
 </div>
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" hidden></div>
 
 <script>
 const DATA = {"skincare": {"toner": [{"name": "코스알엑스 더 6 펩타이드 스킨 부스터 세럼", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-10-01", "useBy": "2028-10-01", "price": null, "store": "올리브영"}, {"name": "라네즈 크림스킨", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2027-10-09", "useBy": "2027-10-09", "price": null, "store": null}], "essence": [{"name": "아벤느 이드랑스 에센스-인-로션", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-03-01", "useBy": "2028-03-01", "price": null, "store": "올리브영"}], "cream": [{"name": "에스트라 아토베리어 365 크림", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-01-13", "useBy": "2029-01-13", "price": null, "store": "올리브영"}, {"name": "에스네이처 아쿠아 스쿠알란 수분크림", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-04-26", "useBy": "2029-04-26", "price": null, "store": "올리브영"}, {"name": "정샘물 에센셜 물 크림", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-11-04", "useBy": "2028-11-04", "price": null, "store": "증정품"}], "sunscreen": [{"name": "구달 맑은 어성초 진정 수분 선크림", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-11-27", "useBy": "2028-11-27", "price": 17500, "store": "올리브영"}, {"name": "AHC 마스터즈 아쿠아 리치 선크림", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-08-25", "useBy": "2027-08-25", "price": null, "store": "선물"}, {"name": "프롬리에 비건 이지에프 시카 워터 선앰플", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": null, "useBy": null, "price": null, "store": "공구"}], "lip-care": [{"name": "헤라 립 트리트먼트", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-09-30", "useBy": "2027-09-30", "price": null, "store": "증정품"}, {"name": "에뛰드 진저슈가 오버나이트 립마스크", "status": "in-use", "openedAt": null, "paoMonths": 18, "expiresAt": "2027-07-17", "useBy": "2027-07-17", "price": null, "store": null}, {"name": "헤라 립 트리트먼트", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2027-10-13", "useBy": "2027-10-13", "price": null, "store": "증정품"}, {"name": "헤라 립 트리트먼트", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2027-10-21", "useBy": "2027-10-21", "price": null, "store": "증정품"}, {"name": "헤라 스컬프트 립 컨실러 #nudist", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-09-30", "useBy": "2028-09-30", "price": null, "store": "증정품", "tone": ["코랄", "굽굽"]}, {"name": "헤라 스컬프트 립 컨실러 #nudist", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-09-30", "useBy": "2028-09-30", "price": null, "store": "증정품", "tone": ["코랄", "굽굽"]}, {"name": "헤라 스컬프트 립 컨실러 #nudist", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-09-30", "useBy": "2028-09-30", "price": null, "store": "증정품", "tone": ["코랄", "굽굽"]}, {"name": "헤라 스컬프트 립 컨실러 #nudist", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": "증정품", "tone": ["코랄", "굽굽"]}]}, "makeup": {"primer": [{"name": "보나메두사 오렌지 스킨 딜리트 베이비 핑크 미니", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-05-15", "useBy": "2028-05-15", "price": null, "store": "무신사", "tone": null}], "prep": [{"name": "디어달리아 프라임 레이어 스킨 프렙", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-09-21", "useBy": "2028-09-21", "price": null, "store": "증정품", "tone": null}, {"name": "쏘내추럴 페이스 프렙 픽서", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-11-03", "useBy": "2028-11-03", "price": null, "store": "증정품", "tone": null}], "foundation": [{"name": "디어달리아 PDRN 비비크림 21C", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-08-21", "useBy": "2028-08-21", "price": 30600, "store": "올리브영", "tone": null}, {"name": "디어달리아 PDRN 비비크림 21C", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-06-24", "useBy": "2028-06-24", "price": null, "store": "증정품", "tone": null, "memo": "소용량"}, {"name": "디어달리아 PDRN 비비크림 21C", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-10-12", "useBy": "2028-10-12", "price": null, "store": "올리브영", "tone": null}], "cushion": [{"name": "퓌 올데이 커버 블랙 쿠션 21N", "status": "in-use", "openedAt": "2026-08-06", "paoMonths": 12, "expiresAt": "2029-05-29", "useBy": "2027-08-06", "price": 28000, "store": "올리브영", "tone": null}, {"name": "퓌 올데이 커버 블랙 쿠션 21N 리필", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-05-29", "useBy": "2029-05-29", "price": null, "store": "올리브영", "tone": null}, {"name": "정샘물 에센셜 스킨 누더 쿠션 페어 로즈", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-06-07", "useBy": "2029-06-07", "price": null, "store": "올리브영", "tone": null}, {"name": "정샘물 에센셜 스킨 누더 쿠션 페어 로즈 리필", "status": "unopened", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-06-07", "useBy": "2029-06-07", "price": null, "store": "올리브영", "tone": null}, {"name": "정샘물 에센셜 스킨 누더 쿠션 크림핑크", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": null, "useBy": null, "price": null, "store": "지그재그", "tone": null}, {"name": "투슬래시포 엔젤릭 새틴 쿠션 N21", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-04-07", "useBy": "2028-04-07", "price": null, "store": "증정품", "tone": null}], "concealer": [{"name": "더샘 커버 퍼펙션 팟 컨실러 #그린 베이지", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-09-06", "useBy": "2027-09-06", "price": null, "store": "더샘 매장", "tone": null}, {"name": "드롭비 컬러즈 컨실 팟 03 살몬베이지", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-07-12", "useBy": "2029-07-12", "price": 3000, "store": "다이소", "tone": null}, {"name": "더샘 커버 퍼펙션 컨실러 펜슬 1.0 클리어베이지", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": "올리브영", "tone": null}], "powder": [{"name": "바닐라코 프라임 프라이머 피니쉬 파우더", "status": "in-use", "openedAt": "2026-08-01", "paoMonths": null, "expiresAt": "2029-07-24", "useBy": "2029-07-24", "price": null, "store": "올리브영", "tone": null}, {"name": "삐아 오 파우더 팩트 03 블러썸핑크", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-11-05", "useBy": "2028-11-05", "price": null, "store": "올리브영", "tone": null}], "setting-spray": [{"name": "쏘내추럴 메이크업 픽서", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-11-05", "useBy": "2028-11-05", "price": null, "store": "올리브영", "tone": null}], "eyebrow": [{"name": "에뛰드 베어 엣지 슬림 브로우 04 라이트브라운", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-04-17", "useBy": "2028-04-17", "price": null, "store": "올리브영", "tone": null}, {"name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프", "status": "unopened", "openedAt": null, "paoMonths": 24, "expiresAt": "2029-01-22", "useBy": "2029-01-22", "price": null, "store": "올리브영", "tone": null}, {"name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프", "status": "unopened", "openedAt": null, "paoMonths": 24, "expiresAt": "2029-01-22", "useBy": "2029-01-22", "price": null, "store": "올리브영", "tone": null}, {"name": "헤라 클리어 브로우 젤", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2027-12-21", "useBy": "2027-12-21", "price": null, "store": "증정품", "tone": null}, {"name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "뮤드 인스파이어 스키니 브로우 카라 B01 밀크티", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}], "eyeshadow": [{"name": "이글립스 소프트 아이 팔레트 08 썸머 아카이브", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-04-22", "useBy": "2029-04-22", "price": null, "store": "선물", "tone": ["코랄"]}, {"name": "에뛰드 왓츠 인 마이 아이즈 #멜론머스크", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-12-17", "useBy": "2028-12-17", "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "롬앤 슬라이드 인 싱글 M15 낫띵피치", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-10-01", "useBy": "2027-10-01", "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "힌스 싱글 아이섀도우 08 어니스티", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-05-05", "useBy": "2028-05-05", "price": null, "store": "올리브영", "tone": ["굽굽"]}, {"name": "홀리카홀리카 마이페이브 피스 아이섀도우 #스트로베리크림", "status": "in-use", "openedAt": null, "paoMonths": 24, "expiresAt": "2028-05-26", "useBy": "2028-05-26", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "홀리카홀리카 마이페이브 피스 아이섀도우 #디어미", "status": "unopened", "openedAt": null, "paoMonths": 24, "expiresAt": "2028-10-28", "useBy": "2028-10-28", "price": null, "store": "올리브영", "tone": null}, {"name": "홀리카홀리카 마이페이브 피스 아이섀도우 #디어미", "status": "unopened", "openedAt": null, "paoMonths": 24, "expiresAt": "2028-10-28", "useBy": "2028-10-28", "price": null, "store": "올리브영", "tone": null}], "eyeliner": [{"name": "투크 워터프루프 슬림 아이라이너 #도화살몬", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-05-20", "useBy": "2028-05-20", "price": null, "store": "올리브영", "tone": null}, {"name": "얼터너티브스테레오 멀티 트임 픽싱 쉐이퍼 02 시나몬피치", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2029-04-27", "useBy": "2029-04-27", "price": null, "store": "증정품", "tone": null}, {"name": "클리오 샤프, 쏘 심플 워터프루프 펜슬 라이너 03 블랙브라운", "status": "in-use", "openedAt": null, "paoMonths": 6, "expiresAt": "2029-05-06", "useBy": "2029-05-06", "price": null, "store": "올리브영", "tone": null}, {"name": "클리오 샤프, 쏘 심플 워터프루프 펜슬 라이너 03 블랙브라운", "status": "unopened", "openedAt": null, "paoMonths": 6, "expiresAt": "2029-05-06", "useBy": "2029-05-06", "price": null, "store": "올리브영", "tone": null}, {"name": "투쿨포스쿨 프로타주 펜슬 09 쉬어누드", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "삐아 라스트 오토 젤 아이라이너 22 피치파스텔", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-02-13", "useBy": "2027-02-13", "price": null, "store": "올리브영", "tone": null}, {"name": "클리오 샤프, 쏘 심플 워터프루프 펜슬 라이너 06 바닐라베이지", "status": "in-use", "openedAt": null, "paoMonths": 6, "expiresAt": "2029-04-21", "useBy": "2029-04-21", "price": null, "store": "올리브영", "tone": null}, {"name": "투쿨포스쿨 아트클래스 스머징 트임 라이너 14 네이키드", "status": "in-use", "openedAt": "2026-10-16", "paoMonths": 6, "expiresAt": null, "useBy": "2027-04-16", "price": 9600, "store": "올리브영", "memo": "제조일 2026-08-28", "tone": null}], "mascara": [{"name": "뮤드 인스파이어 스키니 컬링 마스카라 05 뮤트브라운", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-04-06", "useBy": "2028-04-06", "price": null, "store": "올리브영", "tone": null}, {"name": "뮤드 인스파이어 스키니 컬링 마스카라 05 뮤트브라운", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2029-04-09", "useBy": "2029-04-09", "price": null, "store": "올리브영", "tone": null}, {"name": "뮤드 인스파이어 스키니 컬링 마스카라 05 뮤트브라운", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2029-04-09", "useBy": "2029-04-09", "price": null, "store": "올리브영", "tone": null}], "blusher": [{"name": "페리페라 맑게 물든 선샤인 치크 31 라떼달달해", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-05-02", "useBy": "2028-05-02", "price": 6400, "store": "올리브영", "tone": ["굽굽"]}, {"name": "삐아 레디 투 웨어 다우니 치크 06 다우니피그", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-05-19", "useBy": "2028-05-19", "price": null, "store": "선물", "tone": ["굽굽"]}, {"name": "이글립스 무드 레이어링 치크 미니 #피치쉘", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-04-21", "useBy": "2029-04-21", "price": null, "store": "증정품", "tone": ["코랄"]}, {"name": "컬러그램 틴토리 솜 블러셔 #썸탠저린", "status": "in-use", "openedAt": null, "paoMonths": 24, "expiresAt": "2028-06-09", "useBy": "2028-06-09", "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "나스 블러쉬 #섹스어필", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-09-01", "useBy": "2028-09-01", "price": null, "store": "쿠팡", "tone": ["코랄", "핑크"]}, {"name": "VDL 치크스테인 블러셔 07 미스티 애프리콧", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": null, "useBy": null, "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "VDL 치크스테인 블러셔 01 바운싱 피치", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-09-17", "useBy": "2028-09-17", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "프레시안 에그라이크 크림 블러쉬 03 헬시스마일", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2029-07-21", "useBy": "2029-07-21", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "퓌 립앤치크 블러리 푸딩 팟 #위드아웃", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "VDL 치크스테인 블러셔 07 미스티 애프리콧", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2029-02-18", "useBy": "2029-02-18", "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "헤라 리플렉션 스킨 글로우 쿠션 블러쉬 #란제리", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-07-24", "useBy": "2028-07-24", "price": null, "store": "증정품", "tone": ["핑크"]}, {"name": "투슬래시포 올 오버 페이스 블러쉬 #멀드로즈", "status": "in-use", "openedAt": null, "paoMonths": 24, "expiresAt": "2029-08-03", "useBy": "2029-08-03", "price": 23750, "store": "올리브영", "tone": ["굽굽"]}], "highlighter": [{"name": "클리오 프리즘 하이라이터 01 골드쉬어", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "오프라 슬림 미니 하이라이터 #페퍼민트", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "오프라 미니 하이라이터 #스타아일랜드", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "정샘물 아티스트 쿠션 하이라이터 #헤일로 글림", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-05-24", "useBy": "2028-05-24", "price": null, "store": "증정품", "tone": null}], "contour": [{"name": "에뛰드 재창조 메이커 #쿨쉐딩", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null, "tone": null}, {"name": "페리페라 브이 쉐딩 03 그레이쉬쿨", "status": "in-use", "openedAt": null, "paoMonths": 24, "expiresAt": "2028-04-23", "useBy": "2028-04-23", "price": null, "store": "올리브영", "tone": null}, {"name": "에뛰드 재창조 메이커 #쿨쉐딩", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-04-20", "useBy": "2028-04-20", "price": null, "store": "올리브영", "tone": null}], "base-lip": [{"name": "웨이크메이크 볼드 립 블러 틴트 03 애프리시티", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-03-16", "useBy": "2029-03-16", "price": null, "store": "올리브영", "tone": null}, {"name": "3CE 캐시미어 허그 립스틱 #buddy", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-04-06", "useBy": "2028-04-06", "price": null, "store": "올리브영", "tone": null}, {"name": "삐아 라스트 파우더 립스틱 13 지적", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-03-17", "useBy": "2027-03-17", "price": null, "store": "지그재그", "tone": null}, {"name": "정샘물 립프레션 커버 립 프라이머 #누드베일", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-01-31", "useBy": "2028-01-31", "price": null, "store": "증정품", "tone": null}, {"name": "3CE 소프트 매트 립스틱 #머머링", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-12-20", "useBy": "2028-12-20", "price": null, "store": "선물", "tone": null}, {"name": "3CE 소프트 매트 립스틱 #머머링", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2027-09-26", "useBy": "2027-09-26", "price": 18900, "store": "올리브영", "tone": null}], "lip-tint": [{"name": "클리오 크리스탈 글램 틴트 35 말랑홍시", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-09-10", "useBy": "2028-09-10", "price": null, "store": "올리브영", "tone": null}, {"name": "헤라 센슈얼 누드 글로스 200 조지아", "status": "in-use", "openedAt": "2026-08-31", "paoMonths": null, "expiresAt": "2029-01-08", "useBy": "2029-01-08", "price": 31000, "store": "올리브영", "tone": ["코랄"]}, {"name": "클리오 코팅 립 마스크 02 홍시", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-09-02", "useBy": "2028-09-02", "price": null, "store": "증정품", "tone": null}, {"name": "정샘물 립프레션 메탈 세럼 글로스 #차이티", "status": "in-use", "openedAt": null, "paoMonths": 12, "expiresAt": "2028-01-27", "useBy": "2028-01-27", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "얼터너티브스테레오 립 포션 카라멜 글레이즈 6 딸기바나나", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-12-09", "useBy": "2028-12-09", "price": null, "store": "선물", "tone": ["핑크"]}, {"name": "얼터너티브스테레오 립 포션 카라멜 글레이즈 2 바닐라로즈", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-05-22", "useBy": "2029-05-22", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "에스쁘아 꾸뛰르 립틴트 글레이즈 #진저피치", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2028-03-21", "useBy": "2028-03-21", "price": null, "store": "올리브영", "tone": ["핑크"]}, {"name": "헤라 센슈얼 누드 글로스 200 조지아", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": "2028-10-23", "useBy": "2028-10-23", "price": null, "store": "올리브영", "tone": ["코랄"]}, {"name": "3CE 샤인 리플렉터 #밀키섀도우", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": 15900, "store": "올리브영", "tone": ["굽굽"]}, {"name": "투크 볼륨 글레이즈 시럽 틴트 03 네이키드넛", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": "2029-02-06", "useBy": "2029-02-06", "price": null, "store": "올리브영", "tone": ["굽굽"]}], "lip-liner": [{"name": "하트퍼센트 도트 온 무드 펜슬 슬림 20 살몬베이지", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": "올리브영", "tone": null}]}, "tools": {"puff": [{"name": "바닐라코 파우더 퍼프", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}, {"name": "바닐라코 파우더 퍼프", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}, {"name": "더툴랩 쿠션퍼프", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}], "brow-razor": [{"name": "KAI Pretty 눈썹칼", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}, {"name": "KAI Pretty 눈썹칼", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}, {"name": "KAI Pretty 눈썹칼", "status": "unopened", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}]}, "etc": {"etc": [{"name": "덴티스테 구강 스프레이", "status": "in-use", "openedAt": null, "paoMonths": null, "expiresAt": null, "useBy": null, "price": null, "store": null}]}};
 const CATS = {"skincare": {"name": "기초", "subcategories": {"cleansing-oil": "클렌징 오일/밤", "cleansing-foam": "클렌징 폼/젤", "cleansing-water": "클렌징 워터", "exfoliator": "각질제거제/필링", "toner": "토너/스킨", "toner-pad": "토너 패드", "essence": "에센스", "serum": "세럼/앰플", "lotion": "로션/에멀전", "cream": "크림", "eye-cream": "아이크림", "facial-oil": "페이스 오일", "mist": "미스트", "sheet-mask": "시트 마스크팩", "wash-off-mask": "워시오프/슬리핑 팩", "sunscreen": "선크림/선케어", "lip-care": "립밤/립케어"}}, "makeup": {"name": "색조", "subcategories": {"primer": "프라이머/베이스", "prep": "프렙", "tone-up": "톤업크림", "foundation": "파운데이션", "cushion": "쿠션", "concealer": "컨실러", "powder": "파우더/팩트", "setting-spray": "픽서/세팅 스프레이", "eyebrow": "아이브로우", "eyeshadow": "아이섀도우", "eyeliner": "아이라이너", "mascara": "마스카라", "blusher": "블러셔", "highlighter": "하이라이터", "contour": "쉐딩/컨투어", "base-lip": "베이스립", "lipstick": "립스틱", "lip-tint": "립틴트", "lip-gloss": "립글로스", "lip-liner": "립라이너"}}, "tools": {"name": "도구", "subcategories": {"puff": "퍼프", "brow-razor": "눈썹칼"}}, "etc": {"name": "기타", "subcategories": {"etc": "기타"}}};
 const UPDATED = "2026-10-15";
 const STATUS = {"in-use":"사용중","unopened":"미개봉"};
-const TONE_COLOR = {"코랄":"var(--coral)","핑크":"var(--pink)","굽굽":"var(--goop)"};
+const TONES = {"코랄":"var(--coral)","핑크":"var(--pink)","굽굽":"var(--goop)"};
+const SHAPE = {toner:"bottle",essence:"bottle",serum:"bottle",lotion:"bottle",mist:"bottle","facial-oil":"bottle",
+  "cleansing-oil":"bottle","cleansing-water":"bottle",primer:"bottle",prep:"bottle",foundation:"bottle","setting-spray":"bottle","tone-up":"tube",
+  cream:"jar","eye-cream":"jar","wash-off-mask":"jar",sunscreen:"tube","lip-care":"tube","cleansing-foam":"tube",exfoliator:"tube","toner-pad":"jar",
+  cushion:"compact",powder:"compact",blusher:"compact",highlighter:"compact",eyeshadow:"compact",contour:"pencil",
+  eyebrow:"pencil",eyeliner:"pencil","lip-liner":"pencil","base-lip":"lipstick",lipstick:"lipstick",
+  "lip-tint":"wand","lip-gloss":"wand",mascara:"wand",concealer:"wand"};
+const PARTS = {bottle:["cap","body"],jar:["cap","body"],tube:["body","cap"],compact:["body"],pencil:["tip","body"],
+  lipstick:["tip","collar","body"],wand:["cap","body"],small:["body"]};
+const SOFT = ["#e8eef0","#dfeae4","#f2e4ea","#e6e1f0","#f3ede2","#e2e9f3"];
+const PIGMENT = ["#d98d84","#c97a8c","#e0a48a","#b98a7a","#d7a0b3","#a7787f","#e6b39a","#c4908f"];
+const METAL = ["#2f2a2e","#d9d4d7","#c9a978","#f4f1f2","#5b4b52"];
+const hash = s => [...s].reduce((h,c) => (h*31 + c.charCodeAt(0))>>>0, 7);
 const today = new Date(); today.setHours(0,0,0,0);
 const daysLeft = d => d ? Math.round((new Date(d+"T00:00:00") - today)/86400000) : null;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const won = n => n==null ? null : n.toLocaleString("ko-KR")+"원";
-function duePill(d){
-  const n = daysLeft(d); if(n==null) return "";
-  const cls = n<0 ? "crit" : n<=90 ? "crit" : n<=180 ? "warn" : "";
-  const txt = n<0 ? `기한 지남 (${d})` : `${d}까지`;
-  return `<span class="pill ${cls} num">${txt}</span>`;
-}
+const level = d => { const n = daysLeft(d); return n==null ? "" : n<=90 ? "crit" : n<=183 ? "warn" : ""; };
 
-// flatten
 const items = [];
 for (const [g, subs] of Object.entries(DATA))
-  for (const [s, list] of Object.entries(subs))
-    for (const it of list) items.push({...it, g, s});
+  for (const [s, list] of Object.entries(subs)) for (const it of list) items.push({...it, g, s});
+const products = new Map();   // key g|s|name -> units
+items.forEach(i => { const k = `${i.g}|${i.s}|${i.name}`; if(!products.has(k)) products.set(k, []); products.get(k).push(i); });
+const groupName = g => CATS[g]?.name || g;
+
+// bulbs
+[["bt",9],["bl",5],["br",5]].forEach(([id,n],j) => document.getElementById(id).innerHTML =
+  Array.from({length:n},(_,i)=>`<span class="bulb" style="--i:${j*3+i}"></span>`).join(""));
+
+function renderMirror(){
+  const by = {}; items.forEach(i => by[i.g]=(by[i.g]||0)+1);
+  document.getElementById("counts").innerHTML = `<span>총 <b>${items.length}</b>개</span>` +
+    Object.keys(CATS).filter(g=>by[g]).map(g=>`<span>${groupName(g)} <b>${by[g]}</b></span>`).join("");
+  const soon = items.filter(i => i.useBy && daysLeft(i.useBy) <= 183).sort((a,b)=>a.useBy.localeCompare(b.useBy));
+  const el = document.getElementById("notes");
+  if (!soon.length){ el.innerHTML = `<div class="note calm" style="--r:-1.5deg"><b>6개월 안에 끝나는 제품 없음</b>기한이 가까워지면 여기에 붙어요.</div>`; return; }
+  el.innerHTML = soon.slice(0,6).map((i,n) => { const d = daysLeft(i.useBy);
+    return `<button class="note" style="--r:${[-2,1.5,-1,2,-1.5,1][n%6]}deg" data-k="${esc(i.g+"|"+i.s+"|"+i.name)}">
+      <b>${esc(i.name)}</b><span class="when ${level(i.useBy)} num">${d<0?"기한 지남":`D-${d}`} · ${i.useBy}</span></button>`; }).join("");
+}
 
 const state = {q:"", g:"all", f:new Set()};
-const groupNames = Object.fromEntries(Object.entries(CATS).map(([k,v]) => [k, v.name]));
-
-function renderSummary(){
-  const by = {}; items.forEach(i => by[i.g] = (by[i.g]||0)+1);
-  document.getElementById("summary").innerHTML =
-    `<span>총 <b>${items.length}</b>개</span>` +
-    Object.keys(CATS).filter(g=>by[g]).map(g => `<span>${groupNames[g]} <b>${by[g]}</b></span>`).join("");
-  const soon = items.filter(i => i.useBy && daysLeft(i.useBy) <= 183)
-    .sort((a,b) => a.useBy.localeCompare(b.useBy));
-  document.getElementById("soon").innerHTML = soon.length
-    ? soon.map(i => `<li><span>${esc(i.name)} <span class="meta" style="display:inline">· ${STATUS[i.status]||"상태 모름"}</span></span>${duePill(i.useBy)}</li>`).join("")
-    : `<li><span class="meta">6개월 안에 기한이 끝나는 제품이 없어요.</span></li>`;
-}
-
-function chip(label, pressed, onclick){
-  const b = document.createElement("button");
-  b.className = "chip"; b.type = "button"; b.textContent = label;
-  b.setAttribute("aria-pressed", pressed); b.onclick = onclick; return b;
+function chip(label, on, fn, color){
+  const b = document.createElement("button"); b.type="button"; b.className="chip"; b.setAttribute("aria-pressed", on);
+  b.innerHTML = (color?`<i style="--c:${color}"></i>`:"") + esc(label); b.onclick = fn; return b;
 }
 function renderControls(){
-  const gEl = document.getElementById("groups"); gEl.innerHTML = "";
-  [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
-    gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
-  const fEl = document.getElementById("filters"); fEl.innerHTML = "";
-  [["in-use","사용중"],["unopened","미개봉"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
-    fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
+  const g = document.getElementById("groups"); g.innerHTML = "";
+  [["all","전체"],...Object.keys(CATS).map(k=>[k,groupName(k)])].forEach(([k,l]) =>
+    g.append(chip(l, state.g===k, ()=>{state.g=k; renderControls(); renderCabinet();})));
+  const f = document.getElementById("filters"); f.innerHTML = "";
+  [["in-use","사용중"],["unopened","미개봉"],...Object.entries(TONES).map(([t,c])=>[t,t,c])].forEach(([k,l,c]) =>
+    f.append(chip(l, state.f.has(k), ()=>{state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderCabinet();}, c)));
 }
-
 function match(i){
   if (state.g!=="all" && i.g!==state.g) return false;
   if (state.q && !i.name.toLowerCase().includes(state.q.toLowerCase())) return false;
-  const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x]);
+  const st=[...state.f].filter(x=>STATUS[x]), tn=[...state.f].filter(x=>!STATUS[x]);
   if (st.length && !st.includes(i.status)) return false;
-  if (tn.length && !(i.tone||[]).some(t => tn.includes(t))) return false;
+  if (tn.length && !(i.tone||[]).some(t=>tn.includes(t))) return false;
   return true;
 }
 
-function renderList(){
-  const el = document.getElementById("list"); const shown = items.filter(match);
-  if (!shown.length){ el.innerHTML = `<p class="empty">조건에 맞는 제품이 없어요. 필터를 풀어보세요.</p>`; return; }
-  let html = "";
-  for (const g of Object.keys(CATS)) for (const s of Object.keys(CATS[g].subcategories)){
-    const list = shown.filter(i => i.g===g && i.s===s); if (!list.length) continue;
-    const byName = new Map(); list.forEach(i => { if(!byName.has(i.name)) byName.set(i.name, []); byName.get(i.name).push(i); });
-    html += `<section class="shelf"><h3><span class="group">${groupNames[g]}</span>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
-    for (const [name, units] of byName){
-      const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
-      const tones = [...new Set(units.flatMap(u => u.tone||[]))];
-      const nearest = units.map(u=>u.useBy).filter(Boolean).sort()[0];
-      html += `<details><summary>
-        <div class="top"><span class="name">${esc(name)}</span>${units.length>1?`<span class="count num">×${units.length}</span>`:""}</div>
-        <div class="meta">${Object.entries(cnt).map(([k,v])=>`<span>${k}${units.length>1?" "+v:""}</span>`).join(" · ")}
-          ${tones.map(t=>`<span class="dot" style="--c:${TONE_COLOR[t]||"var(--muted)"}">${esc(t)}</span>`).join("")}
-          ${duePill(nearest)}</div></summary>
-        <ul class="units">${units.map(u => `<li><b>${STATUS[u.status]||"상태 모름"}</b>${
-          [u.openedAt&&`개봉 ${u.openedAt}`, u.paoMonths&&`개봉 후 ${u.paoMonths}개월`, u.expiresAt&&`유통기한 ${u.expiresAt}`,
-           u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
-          || "<span>추가 정보 없음</span>"}</li>`).join("")}</ul></details>`;
-    }
-    html += `</section>`;
-  }
-  el.innerHTML = html;
+function objHTML(key, units){
+  const u = units[0], shape = SHAPE[u.s] || "small", h = hash(u.name);
+  const tones = [...new Set(units.flatMap(x=>x.tone||[]))];
+  let c = u.g==="skincare" ? SOFT[h%SOFT.length] : PIGMENT[h%PIGMENT.length];
+  if (tones.length===1) c = TONES[tones[0]] || c;
+  if (tones.length>1) c = `linear-gradient(90deg,${tones.map(t=>TONES[t]).join(",")})`;
+  const metal = METAL[(h>>3)%METAL.length];
+  const near = units.map(x=>x.useBy).filter(Boolean).sort()[0]; const lv = level(near);
+  const parts = PARTS[shape].map(p => `<span class="${p} ${p==="body"?"shine":""}"></span>`).join("");
+  return `<button class="item" data-k="${esc(key)}" aria-label="${esc(u.name)}${units.length>1?`, ${units.length}개`:""}">
+    <span class="obj ${shape}" style="--c:${c};--metal:${metal}">${lv?`<span class="alert ${lv}"></span>`:""}${parts}${units.length>1?`<span class="badge num">${units.length}</span>`:""}</span>
+    <span class="lbl">${esc(u.name)}</span></button>`;
 }
 
-document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.trim(); renderList(); });
-document.getElementById("foot").textContent = `데이터 기준일 ${UPDATED} · 추가·수정은 Claude에게 말하면 반영돼요.`;
-renderSummary(); renderControls(); renderList();
+function renderCabinet(){
+  const el = document.getElementById("cabinet"); let html = "", any = false;
+  for (const g of Object.keys(CATS)){
+    const isDrawer = g==="tools" || g==="etc";
+    const subs = Object.keys(CATS[g].subcategories).map(s => {
+      const list = [...products].filter(([k,u]) => u[0].g===g && u[0].s===s).map(([k,u]) => [k, u.filter(match)]).filter(([k,u])=>u.length);
+      return [s, list];
+    }).filter(([s,l])=>l.length);
+    if (!subs.length) continue; any = true;
+    const total = subs.reduce((n,[s,l])=>n+l.reduce((m,[k,u])=>m+u.length,0),0);
+    if (isDrawer){
+      html += `<div class="drawers">` + subs.map(([s,l]) => `<div class="drawer"><button type="button" aria-expanded="false" data-drawer>
+        <span>${esc(groupName(g))} · ${esc(CATS[g].subcategories[s])} <small class="num">${l.reduce((m,[k,u])=>m+u.length,0)}개</small></span><span class="knob"></span></button>
+        <ul hidden>${l.map(([k,u])=>`<li><button type="button" data-k="${esc(k)}">${esc(u[0].name)}${u.length>1?` <b class="num">×${u.length}</b>`:""}</button></li>`).join("")}</ul></div>`).join("") + `</div>`;
+      continue;
+    }
+    html += `<div class="zone">${esc(groupName(g))} 선반 <small class="num">${total}개</small></div>`;
+    for (const [s,l] of subs){
+      const n = l.reduce((m,[k,u])=>m+u.length,0);
+      html += `<div class="shelf"><span class="plate">${esc(CATS[g].subcategories[s])} <span class="num">${n}</span></span>
+        <div class="row">${l.map(([k,u])=>objHTML(k,u)).join("")}</div><div class="plank"></div></div>`;
+    }
+  }
+  el.innerHTML = any ? html : `<p class="empty">조건에 맞는 제품이 없어요. 필터를 풀어보세요.</p>`;
+}
+
+const sheet = document.getElementById("sheet"), scrim = document.getElementById("scrim");
+function openSheet(key){
+  const units = products.get(key); if (!units) return; const u = units[0];
+  const tones = [...new Set(units.flatMap(x=>x.tone||[]))];
+  const row = (k,v) => v==null||v==="" ? "" : `<dt>${k}</dt><dd class="num">${esc(v)}</dd>`;
+  sheet.innerHTML = `<div class="sheet-in"><button class="close" type="button" id="close">닫기</button>
+    <h2 id="sheet-h">${esc(u.name)}</h2>
+    <div class="sub"><span>${esc(groupName(u.g))} › ${esc(CATS[u.g].subcategories[u.s])}</span><span class="num">${units.length}개</span>
+      ${tones.map(t=>`<span class="chip" style="cursor:default"><i style="--c:${TONES[t]}"></i>${esc(t)}</span>`).join("")}</div>
+    <ul class="units">${units.map(x=>`<li><dl style="display:contents">${row("상태",STATUS[x.status]||"모름")}${row("개봉일",x.openedAt)}
+      ${row("개봉 후",x.paoMonths&&x.paoMonths+"개월")}${row("유통기한",x.expiresAt)}${row("사용 기한",x.useBy)}
+      ${row("가격",x.price!=null&&x.price.toLocaleString("ko-KR")+"원")}${row("구매처",x.store)}${row("메모",x.memo)}</dl></li>`).join("")}</ul></div>`;
+  sheet.hidden = scrim.hidden = false; document.getElementById("close").focus();
+}
+function closeSheet(){ sheet.hidden = scrim.hidden = true; }
+document.addEventListener("click", e => {
+  const d = e.target.closest("[data-drawer]");
+  if (d){ const ul = d.nextElementSibling; ul.hidden = !ul.hidden; d.setAttribute("aria-expanded", !ul.hidden); return; }
+  const k = e.target.closest("[data-k]"); if (k) openSheet(k.dataset.k);
+  if (e.target.id==="close" || e.target===scrim) closeSheet();
+});
+document.addEventListener("keydown", e => { if (e.key==="Escape") closeSheet(); });
+document.getElementById("q").addEventListener("input", e => { state.q = e.target.value.trim(); renderCabinet(); });
+document.getElementById("foot").textContent = `${UPDATED} 기준 · 추가·수정은 Claude에게 말하면 반영돼요`;
+renderMirror(); renderControls(); renderCabinet();
 </script>
