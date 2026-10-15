@@ -1,7 +1,7 @@
 <title>내 화장대</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
 <style>
 /* Layout: one narrow column like a drawer list — summary, "use soon" strip, filters, then category shelves. */
 :root{
@@ -9,7 +9,7 @@
   --accent:#8a2f5b; --accent-soft:#f3e3ec;
   --warn:#a35c00; --warn-soft:#fbefdc; --crit:#b3261e; --crit-soft:#fbe4e2;
   --coral:#ef7d62; --pink:#e46aa0; --goop:#a07a68;
-  --display:"Gowun Batang",ui-serif,serif;
+  --display:"Hi Melody","Gowun Batang",cursive;
   --body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
@@ -24,7 +24,7 @@
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
 .wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
-h1{font-family:var(--display);font-size:1.9rem;margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:400;font-size:2.6rem;line-height:1.1;margin:0;color:var(--accent);text-wrap:balance}
 h2{font-size:.78rem;letter-spacing:.08em;color:var(--muted);margin:0;font-weight:600}
 .num{font-variant-numeric:tabular-nums}
 .summary{display:flex;flex-wrap:wrap;gap:6px 16px;color:var(--muted)}
@@ -59,7 +59,7 @@ summary::-webkit-details-marker{display:none}
 .units li b{color:var(--fg);font-weight:500}
 .empty{color:var(--muted);text-align:center;padding:24px 0}
 footer{color:var(--muted);font-size:.8rem}
-.zone{font-family:var(--display);font-size:1.25rem;margin:4px 0 -8px;color:var(--fg)}
+.zone{font-family:var(--display);font-weight:400;font-size:1.75rem;line-height:1.1;margin:4px 0 -8px;color:var(--accent)}
 </style>
 
 <div class="wrap">
