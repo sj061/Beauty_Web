@@ -135,7 +135,7 @@ function renderControls(){
   [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
     gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
-  [["in-use","사용중"],["unopened","미개봉"],["used-up","다 쓴 제품"],["sample","샘플"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
+  [["in-use","사용중"],["unopened","미개봉"],["used-up","리뷰"],["sample","샘플"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
     fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
 }
 
