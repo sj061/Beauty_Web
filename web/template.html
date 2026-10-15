@@ -83,7 +83,7 @@ footer{color:var(--muted);font-size:.8rem}
 const DATA = __DATA__;
 const CATS = __CATS__;
 const UPDATED = "__UPDATED__";
-const STATUS = {"in-use":"사용중","unopened":"미개봉"};
+const STATUS = {"in-use":"사용중","unopened":"미개봉","used-up":"다 씀"};
 const TONE_COLOR = {"코랄":"var(--coral)","핑크":"var(--pink)","굽굽":"var(--goop)"};
 const today = new Date(); today.setHours(0,0,0,0);
 const daysLeft = d => d ? Math.round((new Date(d+"T00:00:00") - today)/86400000) : null;
@@ -106,11 +106,12 @@ const state = {q:"", g:"all", f:new Set()};
 const groupNames = Object.fromEntries(Object.entries(CATS).map(([k,v]) => [k, v.name]));
 
 function renderSummary(){
-  const by = {}; items.forEach(i => by[i.g] = (by[i.g]||0)+1);
+  const owned = items.filter(i => i.status!=="used-up");
+  const by = {}; owned.forEach(i => by[i.g] = (by[i.g]||0)+1);
   document.getElementById("summary").innerHTML =
-    `<span>총 <b>${items.length}</b>개</span>` +
+    `<span>총 <b>${owned.length}</b>개</span>` +
     Object.keys(CATS).filter(g=>by[g]).map(g => `<span>${groupNames[g]} <b>${by[g]}</b></span>`).join("");
-  const soon = items.filter(i => i.useBy && daysLeft(i.useBy) <= 183)
+  const soon = owned.filter(i => i.useBy && daysLeft(i.useBy) <= 183)
     .sort((a,b) => a.useBy.localeCompare(b.useBy));
   document.getElementById("soon").innerHTML = soon.length
     ? soon.map(i => `<li><span>${esc(i.name)} <span class="meta" style="display:inline">· ${STATUS[i.status]||"상태 모름"}</span></span>${duePill(i.useBy)}</li>`).join("")
@@ -127,7 +128,7 @@ function renderControls(){
   [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
     gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
-  [["in-use","사용중"],["unopened","미개봉"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
+  [["in-use","사용중"],["unopened","미개봉"],["used-up","다 쓴 제품"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
     fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
 }
 
@@ -135,6 +136,7 @@ function match(i){
   if (state.g!=="all" && i.g!==state.g) return false;
   if (state.q && !i.name.toLowerCase().includes(state.q.toLowerCase())) return false;
   const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x]);
+  if (i.status==="used-up" && !st.includes("used-up")) return false;
   if (st.length && !st.includes(i.status)) return false;
   if (tn.length && !(i.tone||[]).some(t => tn.includes(t))) return false;
   return true;
@@ -151,15 +153,15 @@ function renderList(){
     for (const [name, units] of byName){
       const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];
-      const nearest = units.map(u=>u.useBy).filter(Boolean).sort()[0];
+      const nearest = units.filter(u=>u.status!=="used-up").map(u=>u.useBy).filter(Boolean).sort()[0];
       html += `<details><summary>
         <div class="top"><span class="name">${esc(name)}</span>${units.length>1?`<span class="count num">×${units.length}</span>`:""}</div>
         <div class="meta">${Object.entries(cnt).map(([k,v])=>`<span>${k}${units.length>1?" "+v:""}</span>`).join(" · ")}
           ${tones.map(t=>`<span class="dot" style="--c:${TONE_COLOR[t]||"var(--muted)"}">${esc(t)}</span>`).join("")}
           ${duePill(nearest)}</div></summary>
         <ul class="units">${units.map(u => `<li><b>${STATUS[u.status]||"상태 모름"}</b>${
-          [u.expiresAt&&`유통기한 ${u.expiresAt}`,
-           u.status!=="unopened"&&u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
+          [u.status==="used-up"&&u.usedUpAt&&`다 쓴 날 ${u.usedUpAt}`, u.expiresAt&&`유통기한 ${u.expiresAt}`,
+           u.status==="in-use"&&u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
           || "<span>추가 정보 없음</span>"}</li>`).join("")}</ul></details>`;
     }
     html += `</section>`;
