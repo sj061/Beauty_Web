@@ -2,9 +2,8 @@
   "skincare": {
     "name": "기초",
     "subcategories": {
-      "cleansing-oil": "클렌징 오일/밤",
-      "cleansing-foam": "클렌징 폼/젤",
-      "cleansing-water": "클렌징 워터",
+      "cleanser-1st": "1차 세안",
+      "cleanser-2nd": "2차 세안",
       "exfoliator": "각질제거제/필링",
       "toner": "토너/스킨",
       "toner-pad": "토너 패드",
@@ -25,7 +24,9 @@
     "parents": {
       "mask-moisture": "마스크팩",
       "mask-soothing": "마스크팩",
-      "mask-function": "마스크팩"
+      "mask-function": "마스크팩",
+      "cleanser-1st": "클렌저",
+      "cleanser-2nd": "클렌저"
     }
   },
   "makeup": {
