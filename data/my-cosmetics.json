@@ -1,4 +1,98 @@
 {
-  "skincare": {},
-  "makeup": {}
+  "skincare": {
+    "serum": [
+      {
+        "name": "코스알엑스 더 6 펩타이드 스킨 부스터 세럼",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-10-01",
+        "useBy": "2028-10-01",
+        "price": null,
+        "store": "올리브영"
+      }
+    ],
+    "toner": [
+      {
+        "name": "라네즈 크림스킨",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-10-09",
+        "useBy": "2027-10-09",
+        "price": null,
+        "store": null
+      }
+    ],
+    "cream": [
+      {
+        "name": "에스트라 아토베리어 365 크림",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-01-13",
+        "useBy": "2029-01-13",
+        "price": null,
+        "store": "올리브영"
+      },
+      {
+        "name": "에스네이처 아쿠아 스쿠알란 수분크림",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-04-26",
+        "useBy": "2029-04-26",
+        "price": null,
+        "store": "올리브영"
+      }
+    ],
+    "lotion": [
+      {
+        "name": "아벤느 이드랑스 에센스-인-로션",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-03-01",
+        "useBy": "2028-03-01",
+        "price": null,
+        "store": "올리브영"
+      }
+    ],
+    "sunscreen": [
+      {
+        "name": "구달 맑은 어성초 진정 수분 선크림",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-11-27",
+        "useBy": "2028-11-27",
+        "price": 17500,
+        "store": "올리브영"
+      },
+      {
+        "name": "AHC 마스터즈 아쿠아 리치 선크림",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-08-25",
+        "useBy": "2027-08-25",
+        "price": null,
+        "store": "선물"
+      }
+    ]
+  },
+  "makeup": {
+    "setting-spray": [
+      {
+        "name": "쏘내추럴 메이크업 픽서",
+        "status": null,
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-11-05",
+        "useBy": "2028-11-05",
+        "price": null,
+        "store": "올리브영"
+      }
+    ]
+  }
 }
