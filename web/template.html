@@ -41,7 +41,10 @@ input[type=search]{width:100%;font:inherit;padding:10px 12px;border:1px solid va
 .chip:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .shelf{display:flex;flex-direction:column;gap:6px}
 .shelf h3{margin:0;font-size:1rem;display:flex;gap:8px;align-items:baseline}
-.shelf h3 small{color:var(--muted);font-weight:400}
+.shelf h3 small,.parent small{color:var(--muted);font-weight:400}
+.parent{margin:0 0 -10px;font-size:1.05rem;display:flex;gap:8px;align-items:baseline}
+.shelf.child{padding-left:12px;border-left:2px solid var(--line)}
+.shelf.child h3{font-size:.92rem}
 .group{font-size:.72rem;color:var(--accent);font-weight:600;letter-spacing:.04em}
 details{background:var(--surface);border:1px solid var(--line);border-radius:10px}
 summary{list-style:none;cursor:pointer;padding:10px 12px;display:flex;flex-direction:column;gap:4px}
@@ -72,7 +75,7 @@ footer{color:var(--muted);font-size:.8rem}
     <ul id="soon"></ul>
   </section>
   <div class="controls">
-    <input type="search" id="q" placeholder="제품명으로 찾기 (예: 틴트, 헤라)" aria-label="제품명 검색">
+    <input type="search" id="q" placeholder="제품명이나 종류로 찾기 (예: 토너, 마스크팩, 헤라)" aria-label="제품명이나 종류 검색">
     <div class="row" id="groups" role="group" aria-label="대분류"></div>
     <div class="row" id="filters" role="group" aria-label="상태와 톤"></div>
   </div>
@@ -112,10 +115,13 @@ function renderSummary(){
   document.getElementById("summary").innerHTML =
     `<span>총 <b>${owned.length}</b>개</span>` +
     Object.keys(CATS).filter(g=>by[g]).map(g => `<span>${groupNames[g]} <b>${by[g]}</b></span>`).join("");
-  const soon = owned.filter(i => i.useBy && daysLeft(i.useBy) <= 183)
-    .sort((a,b) => a.useBy.localeCompare(b.useBy));
+  const soonMap = new Map();
+  owned.filter(i => i.useBy && daysLeft(i.useBy) <= 183).forEach(i => {
+    const k = i.name+"|"+i.useBy+"|"+i.status; const e = soonMap.get(k);
+    e ? e.n++ : soonMap.set(k, {...i, n:1}); });
+  const soon = [...soonMap.values()].sort((a,b) => a.useBy.localeCompare(b.useBy));
   document.getElementById("soon").innerHTML = soon.length
-    ? soon.map(i => `<li><span>${esc(i.name)} <span class="meta" style="display:inline">· ${STATUS[i.status]||"상태 모름"}</span></span>${duePill(i.useBy)}</li>`).join("")
+    ? soon.map(i => `<li><span>${esc(i.name)}${i.n>1?` <b class="num">×${i.n}</b>`:""} <span class="meta" style="display:inline">· ${STATUS[i.status]||"상태 모름"}</span></span>${duePill(i.useBy)}</li>`).join("")
     : `<li><span class="meta">6개월 안에 기한이 끝나는 제품이 없어요.</span></li>`;
 }
 
@@ -135,7 +141,11 @@ function renderControls(){
 
 function match(i){
   if (state.g!=="all" && i.g!==state.g) return false;
-  if (state.q && !i.name.toLowerCase().includes(state.q.toLowerCase())) return false;
+  if (state.q){
+    const q = state.q.toLowerCase();
+    const hay = [i.name, CATS[i.g].subcategories[i.s], CATS[i.g].parents?.[i.s] || ""].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
   const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x]);
   if (i.status==="used-up" && !st.includes("used-up")) return false;
   if (st.length && !st.includes(i.status)) return false;
@@ -146,7 +156,7 @@ function match(i){
 function renderList(){
   const el = document.getElementById("list"); const shown = items.filter(match);
   if (!shown.length){ el.innerHTML = `<p class="empty">조건에 맞는 제품이 없어요. 필터를 풀어보세요.</p>`; return; }
-  let html = "", lastG = null;
+  let html = "", lastG = null, lastP = null;
   const rank = u => ({"in-use":0,"unopened":1,"used-up":3})[u.status] ?? 2;
   const due = u => u.useBy || u.expiresAt || "9999-12-31";
   const cmp = (a,b) => rank(a)-rank(b) || due(a).localeCompare(due(b));
@@ -156,7 +166,13 @@ function renderList(){
     const sorted = [...byName].map(([n,u]) => [n, u.sort(cmp)]).sort((a,b) => cmp(a[1][0], b[1][0]));
     if (g!==lastG && groupNames[g]!==CATS[g].subcategories[s]) html += `<h2 class="zone">${esc(groupNames[g])}</h2>`;
     lastG = g;
-    html += `<section class="shelf"><h3>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
+    const parent = CATS[g].parents?.[s] || null;
+    if (parent && parent!==lastP){
+      const pn = shown.filter(i => i.g===g && CATS[g].parents?.[i.s]===parent).length;
+      html += `<h3 class="parent">${esc(parent)} <small class="num">${pn}개</small></h3>`;
+    }
+    lastP = parent;
+    html += `<section class="shelf${parent?" child":""}"><h3>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
     for (const [name, units] of sorted){
       const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];

@@ -15,12 +15,17 @@
       "eye-cream": "아이크림",
       "facial-oil": "페이스 오일",
       "mist": "미스트",
-      "mask-moisture": "마스크팩 · 보습",
-      "mask-soothing": "마스크팩 · 진정",
-      "mask-function": "마스크팩 · 기능성",
+      "mask-moisture": "보습",
+      "mask-soothing": "진정",
+      "mask-function": "기능성",
       "wash-off-mask": "워시오프/슬리핑 팩",
       "sunscreen": "선케어",
       "lip-care": "립밤/립케어"
+    },
+    "parents": {
+      "mask-moisture": "마스크팩",
+      "mask-soothing": "마스크팩",
+      "mask-function": "마스크팩"
     }
   },
   "makeup": {
