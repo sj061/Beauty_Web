@@ -24,6 +24,18 @@
         "store": null
       }
     ],
+    "essence": [
+      {
+        "name": "아벤느 이드랑스 에센스-인-로션",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-03-01",
+        "useBy": "2028-03-01",
+        "price": null,
+        "store": "올리브영"
+      }
+    ],
     "cream": [
       {
         "name": "에스트라 아토베리어 365 크림",
@@ -42,18 +54,6 @@
         "paoMonths": 12,
         "expiresAt": "2029-04-26",
         "useBy": "2029-04-26",
-        "price": null,
-        "store": "올리브영"
-      }
-    ],
-    "lotion": [
-      {
-        "name": "아벤느 이드랑스 에센스-인-로션",
-        "status": "in-use",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2028-03-01",
-        "useBy": "2028-03-01",
         "price": null,
         "store": "올리브영"
       }
@@ -85,7 +85,7 @@
     "setting-spray": [
       {
         "name": "쏘내추럴 메이크업 픽서",
-        "status": null,
+        "status": "in-use",
         "openedAt": null,
         "paoMonths": null,
         "expiresAt": "2028-11-05",
