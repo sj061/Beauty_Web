@@ -45,7 +45,7 @@
 | `name` | 제품명 (브랜드·호수 포함) | 필수 |
 | `status` | `in-use`(사용중) / `unopened`(미개봉) | 모르면 `null` |
 | `openedAt` | 개봉일 `YYYY-MM-DD` | 미개봉이거나 개봉일을 모르면 `null` |
-| `paoMonths` | 개봉 후 사용기한 (개월) | 용기의 `12M` 표시 → `12` |
+| `paoMonths` | 개봉 후 사용기한 (개월) | 용기의 `12M` 표시 → `12`. `useBy` 계산용이며 화면에는 표시하지 않는다 |
 | `expiresAt` | 유통기한 `YYYY-MM-DD` | |
 | `useBy` | 실제 사용 기한 `YYYY-MM-DD` | 자동 계산: `openedAt + paoMonths`와 `expiresAt` 중 빠른 날짜. 미개봉이거나 개봉일을 모르면 `expiresAt` |
 | `price` | 최저가 (원) | 실제 구매가가 아니라 사용자가 알아본 최저가 |
