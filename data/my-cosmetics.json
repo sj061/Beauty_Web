@@ -288,6 +288,19 @@
         "tone": [
           "굽굽"
         ]
+      },
+      {
+        "name": "홀리카홀리카 마이페이브 피스 아이섀도우 #스트로베리크림",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 24,
+        "expiresAt": "2028-05-26",
+        "useBy": "2028-05-26",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "핑크"
+        ]
       }
     ],
     "eyeliner": [
@@ -416,6 +429,32 @@
         "store": "올리브영",
         "tone": [
           "코랄"
+        ]
+      },
+      {
+        "name": "VDL 치크스테인 블러셔 01 바운싱 피치",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-09-17",
+        "useBy": "2028-09-17",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "핑크"
+        ]
+      },
+      {
+        "name": "프레시안 에그라이크 크림 블러쉬 03 헬시스마일",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-07-21",
+        "useBy": "2029-07-21",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "핑크"
         ]
       }
     ],
@@ -557,6 +596,45 @@
         "price": null,
         "store": "증정품",
         "tone": null
+      },
+      {
+        "name": "정샘물 립프레션 메탈 세럼 글로스 #차이티",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-01-27",
+        "useBy": "2028-01-27",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "핑크"
+        ]
+      },
+      {
+        "name": "얼터너티브스테레오 립 포션 카라멜 글레이즈 6 딸기바나나",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-12-09",
+        "useBy": "2028-12-09",
+        "price": null,
+        "store": "선물",
+        "tone": [
+          "핑크"
+        ]
+      },
+      {
+        "name": "얼터너티브스테레오 립 포션 카라멜 글레이즈 2 바닐라로즈",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-05-22",
+        "useBy": "2029-05-22",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "핑크"
+        ]
       }
     ],
     "lip-liner": [
