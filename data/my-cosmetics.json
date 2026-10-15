@@ -77,9 +77,44 @@
         "price": null,
         "store": "선물"
       }
+    ],
+    "lip-care": [
+      {
+        "name": "클리오 코팅 립 마스크 02 홍시",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-09-02",
+        "useBy": "2028-09-02",
+        "price": null,
+        "store": "증정품"
+      },
+      {
+        "name": "헤라 립 트리트먼트",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-09-30",
+        "useBy": "2027-09-30",
+        "price": null,
+        "store": "증정품"
+      }
     ]
   },
   "makeup": {
+    "foundation": [
+      {
+        "name": "디어달리아 PDRN 비비크림 21C",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-08-21",
+        "useBy": "2028-08-21",
+        "price": 30600,
+        "store": "올리브영",
+        "tone": null
+      }
+    ],
     "cushion": [
       {
         "name": "퓌 올데이 커버 블랙 쿠션 21N",
@@ -102,6 +137,63 @@
         "price": null,
         "store": "올리브영",
         "tone": null
+      },
+      {
+        "name": "정샘물 에센셜 스킨 누더 쿠션 페어 로즈",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-06-07",
+        "useBy": "2029-06-07",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "정샘물 에센셜 스킨 누더 쿠션 페어 로즈 리필",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-06-07",
+        "useBy": "2029-06-07",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "정샘물 에센셜 스킨 누더 쿠션 크림핑크",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": "지그재그",
+        "tone": null
+      }
+    ],
+    "concealer": [
+      {
+        "name": "더샘 커버 퍼펙션 팟 컨실러 #그린 베이지",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-09-06",
+        "useBy": "2027-09-06",
+        "price": null,
+        "store": "더샘 매장",
+        "tone": null
+      },
+      {
+        "name": "드롭비 컬러즈 컨실 팟 03 살몬베이지",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-07-12",
+        "useBy": "2029-07-12",
+        "price": 3000,
+        "store": "다이소",
+        "tone": null
       }
     ],
     "powder": [
@@ -112,6 +204,17 @@
         "paoMonths": null,
         "expiresAt": "2029-07-24",
         "useBy": "2029-07-24",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "삐아 오 파우더 팩트 03 블러썸핑크",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-11-05",
+        "useBy": "2028-11-05",
         "price": null,
         "store": "올리브영",
         "tone": null
@@ -141,6 +244,60 @@
         "price": null,
         "store": "올리브영",
         "tone": null
+      }
+    ],
+    "eyeshadow": [
+      {
+        "name": "이글립스 소프트 아이 팔레트 08 썸머 아카이브",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-04-22",
+        "useBy": "2029-04-22",
+        "price": null,
+        "store": "선물",
+        "tone": [
+          "코랄"
+        ]
+      },
+      {
+        "name": "에뛰드 왓츠 인 마이 아이즈 #멜론머스크",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-12-17",
+        "useBy": "2028-12-17",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "코랄"
+        ]
+      },
+      {
+        "name": "롬앤 슬라이드 인 싱글 M15 낫띵피치",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-10-01",
+        "useBy": "2027-10-01",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "코랄"
+        ]
+      },
+      {
+        "name": "힌스 싱글 아이섀도우 08 어니스티",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-05-05",
+        "useBy": "2028-05-05",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "굽굽"
+        ]
       }
     ],
     "eyeliner": [
@@ -188,6 +345,122 @@
         "useBy": "2028-04-06",
         "price": null,
         "store": "올리브영",
+        "tone": null
+      }
+    ],
+    "blusher": [
+      {
+        "name": "페리페라 맑게 물든 선샤인 치크 31 라떼달달해",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-05-02",
+        "useBy": "2028-05-02",
+        "price": 6400,
+        "store": "올리브영",
+        "tone": [
+          "굽굽"
+        ]
+      },
+      {
+        "name": "삐아 레디 투 웨어 다우니 치크 06 다우니피그",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-05-19",
+        "useBy": "2028-05-19",
+        "price": null,
+        "store": "선물",
+        "tone": [
+          "굽굽"
+        ]
+      },
+      {
+        "name": "이글립스 무드 레이어링 치크 미니 #피치쉘",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-04-21",
+        "useBy": "2029-04-21",
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄"
+        ]
+      },
+      {
+        "name": "컬러그램 틴토리 솜 블러셔 #썸탠저린",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 24,
+        "expiresAt": "2028-06-09",
+        "useBy": "2028-06-09",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "코랄"
+        ]
+      },
+      {
+        "name": "나스 블러쉬 #섹스어필",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-09-01",
+        "useBy": "2028-09-01",
+        "price": null,
+        "store": "쿠팡",
+        "tone": [
+          "코랄",
+          "핑크"
+        ]
+      },
+      {
+        "name": "VDL 치크스테인 블러셔 07 미스티 애프리콧",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "코랄"
+        ]
+      }
+    ],
+    "highlighter": [
+      {
+        "name": "클리오 프리즘 하이라이터 01 골드쉬어",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
+        "tone": null
+      },
+      {
+        "name": "오프라 슬림 미니 하이라이터 #페퍼민트",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
+        "tone": null
+      },
+      {
+        "name": "오프라 미니 하이라이터 #스타아일랜드",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
         "tone": null
       }
     ],
@@ -247,6 +520,17 @@
         "useBy": "2027-03-17",
         "price": null,
         "store": "지그재그",
+        "tone": null
+      },
+      {
+        "name": "정샘물 립프레션 커버 립 프라이머 #누드베일",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-01-31",
+        "useBy": "2028-01-31",
+        "price": null,
+        "store": "증정품",
         "tone": null
       }
     ],
