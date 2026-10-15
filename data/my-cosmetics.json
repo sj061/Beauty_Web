@@ -180,6 +180,20 @@
           "코랄",
           "굽굽"
         ]
+      },
+      {
+        "name": "헤라 스컬프트 립 컨실러 #nudist",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": "증정품",
+        "tone": [
+          "코랄",
+          "굽굽"
+        ]
       }
     ]
   },
@@ -346,6 +360,17 @@
         "useBy": "2029-07-12",
         "price": 3000,
         "store": "다이소",
+        "tone": null
+      },
+      {
+        "name": "더샘 커버 퍼펙션 컨실러 펜슬 1.0 클리어베이지",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": "올리브영",
         "tone": null
       }
     ],
@@ -587,6 +612,28 @@
         "price": null,
         "store": null,
         "tone": null
+      },
+      {
+        "name": "삐아 라스트 오토 젤 아이라이너 22 피치파스텔",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-02-13",
+        "useBy": "2027-02-13",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "클리오 샤프, 쏘 심플 워터프루프 펜슬 라이너 06 바닐라베이지",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 6,
+        "expiresAt": "2029-04-21",
+        "useBy": "2029-04-21",
+        "price": null,
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "mascara": [
@@ -767,6 +814,19 @@
         "store": "증정품",
         "tone": [
           "핑크"
+        ]
+      },
+      {
+        "name": "투슬래시포 올 오버 페이스 블러쉬 #멀드로즈",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 24,
+        "expiresAt": "2029-08-03",
+        "useBy": "2029-08-03",
+        "price": 23750,
+        "store": "올리브영",
+        "tone": [
+          "굽굽"
         ]
       }
     ],
@@ -1007,6 +1067,32 @@
         "store": "올리브영",
         "tone": [
           "코랄"
+        ]
+      },
+      {
+        "name": "3CE 샤인 리플렉터 #밀키섀도우",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": 15900,
+        "store": "올리브영",
+        "tone": [
+          "굽굽"
+        ]
+      },
+      {
+        "name": "투크 볼륨 글레이즈 시럽 틴트 03 네이키드넛",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-02-06",
+        "useBy": "2029-02-06",
+        "price": null,
+        "store": "올리브영",
+        "tone": [
+          "굽굽"
         ]
       }
     ],
