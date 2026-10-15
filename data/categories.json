@@ -47,8 +47,7 @@
   "tools": {
     "name": "도구",
     "subcategories": {
-      "puff": "퍼프",
-      "brow-razor": "눈썹칼"
+      "tools": "도구"
     }
   },
   "etc": {

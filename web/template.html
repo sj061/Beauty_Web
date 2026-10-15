@@ -147,7 +147,7 @@ function renderList(){
   for (const g of Object.keys(CATS)) for (const s of Object.keys(CATS[g].subcategories)){
     const list = shown.filter(i => i.g===g && i.s===s); if (!list.length) continue;
     const byName = new Map(); list.forEach(i => { if(!byName.has(i.name)) byName.set(i.name, []); byName.get(i.name).push(i); });
-    html += `<section class="shelf"><h3><span class="group">${groupNames[g]}</span>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
+    html += `<section class="shelf"><h3>${groupNames[g]!==CATS[g].subcategories[s]?`<span class="group">${groupNames[g]}</span>`:""}${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
     for (const [name, units] of byName){
       const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];

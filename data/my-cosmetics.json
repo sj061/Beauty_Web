@@ -1141,7 +1141,7 @@
     ]
   },
   "tools": {
-    "puff": [
+    "tools": [
       {
         "name": "바닐라코 파우더 퍼프",
         "status": "unopened",
@@ -1171,9 +1171,7 @@
         "useBy": null,
         "price": null,
         "store": null
-      }
-    ],
-    "brow-razor": [
+      },
       {
         "name": "KAI Pretty 눈썹칼",
         "status": "unopened",
