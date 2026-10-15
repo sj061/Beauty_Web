@@ -385,6 +385,28 @@
         "price": null,
         "store": "증정품",
         "tone": null
+      },
+      {
+        "name": "웨이크메이크 내추럴 하드 브로우 펜슬 06 베이지토프",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
+        "tone": null
+      },
+      {
+        "name": "투쿨포스쿨 프로타주 펜슬 09 쉬어누드",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
+        "tone": null
       }
     ],
     "eyeshadow": [
