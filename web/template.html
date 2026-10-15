@@ -135,7 +135,7 @@ function renderControls(){
   [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
     gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
-  [["in-use","사용중"],["unopened","미개봉"],["used-up","다 쓴 제품"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
+  [["in-use","사용중"],["unopened","미개봉"],["used-up","다 쓴 제품"],["sample","샘플"],["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"]].forEach(([k,l]) =>
     fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
 }
 
@@ -143,10 +143,11 @@ function match(i){
   if (state.g!=="all" && i.g!==state.g) return false;
   if (state.q){
     const q = state.q.toLowerCase();
-    const hay = [i.name, CATS[i.g].subcategories[i.s], CATS[i.g].parents?.[i.s] || ""].join(" ").toLowerCase();
+    const hay = [i.name, CATS[i.g].subcategories[i.s], CATS[i.g].parents?.[i.s] || "", i.sample ? "샘플" : ""].join(" ").toLowerCase();
     if (!hay.includes(q)) return false;
   }
-  const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x]);
+  if (state.f.has("sample") && !i.sample) return false;
+  const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x] && x!=="sample");
   if (i.status==="used-up" && !st.includes("used-up")) return false;
   if (st.length && !st.includes(i.status)) return false;
   if (tn.length && !(i.tone||[]).some(t => tn.includes(t))) return false;
@@ -159,11 +160,12 @@ function renderList(){
   let html = "", lastG = null, lastP = null;
   const rank = u => ({"in-use":0,"unopened":1,"used-up":3})[u.status] ?? 2;
   const due = u => u.useBy || u.expiresAt || "9999-12-31";
-  const cmp = (a,b) => rank(a)-rank(b) || due(a).localeCompare(due(b));
+  const cmp = (a,b) => rank(a)-rank(b) || (a.sample?1:0)-(b.sample?1:0) || due(a).localeCompare(due(b));
+  const allSample = u => u.every(x => x.sample) ? 1 : 0;
   for (const g of Object.keys(CATS)) for (const s of Object.keys(CATS[g].subcategories)){
     const list = shown.filter(i => i.g===g && i.s===s); if (!list.length) continue;
     const byName = new Map(); list.forEach(i => { if(!byName.has(i.name)) byName.set(i.name, []); byName.get(i.name).push(i); });
-    const sorted = [...byName].map(([n,u]) => [n, u.sort(cmp)]).sort((a,b) => cmp(a[1][0], b[1][0]));
+    const sorted = [...byName].map(([n,u]) => [n, u.sort(cmp)]).sort((a,b) => allSample(a[1])-allSample(b[1]) || cmp(a[1][0], b[1][0]));
     if (g!==lastG && groupNames[g]!==CATS[g].subcategories[s]) html += `<h2 class="zone">${esc(groupNames[g])}</h2>`;
     lastG = g;
     const parent = CATS[g].parents?.[s] || null;
@@ -175,14 +177,15 @@ function renderList(){
     html += `<section class="shelf${parent?" child":""}"><h3>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
     for (const [name, units] of sorted){
       const cnt = {}; units.forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
+      const ns = units.filter(u => u.sample).length;
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];
       const nearest = units.filter(u=>u.status!=="used-up").map(u=>u.useBy).filter(Boolean).sort()[0];
       html += `<details><summary>
-        <div class="top"><span class="name">${esc(name)}</span>${units.length>1?`<span class="count num">×${units.length}</span>`:""}</div>
-        <div class="meta">${Object.entries(cnt).map(([k,v])=>`<span>${k}${units.length>1?" "+v:""}</span>`).join(" · ")}
+        <div class="top"><span class="name">${esc(name)}${ns===units.length?` <span class="pill">샘플</span>`:""}</span>${units.length>1?`<span class="count num">×${units.length}</span>`:""}</div>
+        <div class="meta">${Object.entries(cnt).map(([k,v])=>`<span>${k}${units.length>1?" "+v:""}</span>`).join(" · ")}${ns&&ns<units.length?` · <span>샘플 ${ns}</span>`:""}
           ${tones.map(t=>`<span class="dot" style="--c:${TONE_COLOR[t]||"var(--muted)"}">${esc(t)}</span>`).join("")}
           ${duePill(nearest)}</div></summary>
-        <ul class="units">${units.map(u => `<li><b>${STATUS[u.status]||"상태 모름"}</b>${
+        <ul class="units">${units.map(u => `<li><b>${STATUS[u.status]||"상태 모름"}${u.sample?" · 샘플":""}</b>${
           [u.status==="used-up"&&u.usedUpAt&&`다 쓴 날 ${u.usedUpAt}`, u.expiresAt&&`유통기한 ${u.expiresAt}`,
            u.status==="in-use"&&u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
           || "<span>추가 정보 없음</span>"}</li>`).join("")}</ul></details>`;

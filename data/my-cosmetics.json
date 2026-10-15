@@ -22,6 +22,17 @@
         "price": null,
         "store": null,
         "openedAtAssumed": true
+      },
+      {
+        "name": "넘버즈인 보들보들 모공결 결부스팅 토너",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-03-10",
+        "useBy": "2029-03-10",
+        "price": null,
+        "store": null,
+        "sample": true
       }
     ],
     "essence": [
@@ -35,6 +46,219 @@
         "price": null,
         "store": "올리브영",
         "openedAtAssumed": true
+      }
+    ],
+    "serum": [
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "in-use",
+        "openedAt": "2026-10-15",
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true,
+        "openedAtAssumed": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-08-29",
+        "useBy": "2027-08-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "성분에디터 그린토마토 엔엠엔 포어 리프팅 앰플",
+        "status": "in-use",
+        "openedAt": "2026-10-15",
+        "paoMonths": null,
+        "expiresAt": "2028-12-21",
+        "useBy": "2028-12-21",
+        "price": null,
+        "store": null,
+        "sample": true,
+        "openedAtAssumed": true
+      },
+      {
+        "name": "아이오페 레티놀 슈퍼 바운스 세럼",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-03-17",
+        "useBy": "2028-03-17",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "아이오페 레티놀 슈퍼 바운스 세럼",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-03-27",
+        "useBy": "2028-03-27",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "아이오페 레티놀 레티젝션 세럼",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-11-06",
+        "useBy": "2028-11-06",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "에스트라 아토베리어 365 세라-히알 속수분 앰플",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-12-29",
+        "useBy": "2028-12-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "에스트라 아토베리어 365 세라-히알 속수분 앰플",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-12-29",
+        "useBy": "2028-12-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "넘버즈인 보들보들 모공결 세럼",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-03-04",
+        "useBy": "2029-03-04",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "에스네이처 아쿠아 스쿠알란 세럼",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-06-01",
+        "useBy": "2028-06-01",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "성분에디터 실크 펩타이드 이지에프 하트핏 볼륨 앰플",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-11-05",
+        "useBy": "2028-11-05",
+        "price": null,
+        "store": null,
+        "sample": true
       }
     ],
     "cream": [
@@ -69,6 +293,51 @@
         "useBy": "2028-11-04",
         "price": null,
         "store": "증정품"
+      },
+      {
+        "name": "에센허브 티트리 수딩 인 카밍 크림",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-06-25",
+        "useBy": "2029-06-25",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "퍼셀 픽셀바이옴 히알 콜라겐 스플래쉬 크림",
+        "status": "in-use",
+        "openedAt": "2026-10-15",
+        "paoMonths": 12,
+        "expiresAt": "2028-10-22",
+        "useBy": "2027-10-15",
+        "price": null,
+        "store": null,
+        "sample": true,
+        "openedAtAssumed": true
+      },
+      {
+        "name": "이즈앤트리 어니언 뉴페어 겔크림 플러스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-01-18",
+        "useBy": "2029-01-18",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "에스네이처 아쿠아 스쿠알란 수분크림",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2029-04-19",
+        "useBy": "2029-04-19",
+        "price": null,
+        "store": null,
+        "sample": true
       }
     ],
     "mask-moisture": [
@@ -387,6 +656,19 @@
         "store": "올리브영"
       }
     ],
+    "wash-off-mask": [
+      {
+        "name": "한율 달빛유자 수면팩",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-11-11",
+        "useBy": "2027-11-11",
+        "price": null,
+        "store": null,
+        "sample": true
+      }
+    ],
     "sunscreen": [
       {
         "name": "구달 맑은 어성초 진정 수분 선크림",
@@ -420,6 +702,39 @@
         "price": null,
         "store": "공구",
         "openedAtAssumed": true
+      },
+      {
+        "name": "헤라 유브이 프로텍터 멀티디펜스",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2028-06-15",
+        "useBy": "2028-06-15",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "셀퓨전씨 레이저 유브이 썬스크린",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2027-10-29",
+        "useBy": "2027-10-29",
+        "price": null,
+        "store": null,
+        "sample": true
+      },
+      {
+        "name": "조선미녀 맑은쌀 선크림",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-07-14",
+        "useBy": "2028-07-14",
+        "price": null,
+        "store": null,
+        "sample": true
       }
     ],
     "lip-care": [
