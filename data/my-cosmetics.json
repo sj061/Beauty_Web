@@ -89,7 +89,8 @@
         "expiresAt": "2028-11-05",
         "useBy": "2028-11-05",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "eyebrow": [
@@ -101,7 +102,8 @@
         "expiresAt": "2028-04-17",
         "useBy": "2028-04-17",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "eyeliner": [
@@ -113,7 +115,8 @@
         "expiresAt": "2028-05-20",
         "useBy": "2028-05-20",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       },
       {
         "name": "얼터너티브스테레오 멀티 트임 픽싱 쉐이퍼 02 시나몬피치",
@@ -123,7 +126,8 @@
         "expiresAt": "2029-04-27",
         "useBy": "2029-04-27",
         "price": null,
-        "store": "증정품"
+        "store": "증정품",
+        "tone": null
       },
       {
         "name": "클리오 샤프, 쏘 심플 워터프루프 펜슬 라이너 03 블랙브라운",
@@ -133,7 +137,8 @@
         "expiresAt": "2029-05-06",
         "useBy": "2029-05-06",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "mascara": [
@@ -145,7 +150,8 @@
         "expiresAt": "2028-04-06",
         "useBy": "2028-04-06",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "contour": [
@@ -157,7 +163,8 @@
         "expiresAt": null,
         "useBy": null,
         "price": null,
-        "store": null
+        "store": null,
+        "tone": null
       },
       {
         "name": "페리페라 브이 쉐딩 03 그레이쉬쿨",
@@ -167,19 +174,21 @@
         "expiresAt": "2028-04-23",
         "useBy": "2028-04-23",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
-    "lipstick": [
+    "base-lip": [
       {
-        "name": "삐아 라스트 파우더 립스틱 13 지적",
+        "name": "웨이크메이크 볼드 립 블러 틴트 03 애프리시티",
         "status": "in-use",
         "openedAt": null,
         "paoMonths": null,
-        "expiresAt": "2027-03-17",
-        "useBy": "2027-03-17",
+        "expiresAt": "2029-03-16",
+        "useBy": "2029-03-16",
         "price": null,
-        "store": "지그재그"
+        "store": "올리브영",
+        "tone": null
       },
       {
         "name": "3CE 캐시미어 허그 립스틱 #buddy",
@@ -189,20 +198,22 @@
         "expiresAt": "2028-04-06",
         "useBy": "2028-04-06",
         "price": null,
-        "store": "올리브영"
-      }
-    ],
-    "lip-tint": [
+        "store": "올리브영",
+        "tone": null
+      },
       {
-        "name": "웨이크메이크 볼드 립 블러 틴트 03 애프리시티",
+        "name": "삐아 라스트 파우더 립스틱 13 지적",
         "status": "in-use",
         "openedAt": null,
         "paoMonths": null,
-        "expiresAt": "2029-03-16",
-        "useBy": "2029-03-16",
+        "expiresAt": "2027-03-17",
+        "useBy": "2027-03-17",
         "price": null,
-        "store": "올리브영"
-      },
+        "store": "지그재그",
+        "tone": null
+      }
+    ],
+    "lip-tint": [
       {
         "name": "클리오 크리스탈 글램 틴트 35 말랑홍시",
         "status": "in-use",
@@ -211,10 +222,9 @@
         "expiresAt": "2028-09-10",
         "useBy": "2028-09-10",
         "price": null,
-        "store": "올리브영"
-      }
-    ],
-    "lip-gloss": [
+        "store": "올리브영",
+        "tone": null
+      },
       {
         "name": "헤라 센슈얼 누드 글로스 200 조지아",
         "status": "in-use",
@@ -223,7 +233,8 @@
         "expiresAt": "2029-01-08",
         "useBy": "2029-01-08",
         "price": 31000,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ],
     "lip-liner": [
@@ -235,7 +246,8 @@
         "expiresAt": null,
         "useBy": null,
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "tone": null
       }
     ]
   }
