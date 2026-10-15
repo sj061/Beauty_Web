@@ -10,7 +10,7 @@
 제품명+호수 / 개봉일(또는 미개봉, 개봉일을 모르면 사용중) / 개봉 후 사용기한 / 유통기한 / 가격 / 구매처 / 톤(색조만)
 ```
 
-- `data/categories.json` — 카테고리 목록. `대분류(skincare/makeup) → 소분류 id → 한글 이름`
+- `data/categories.json` — 카테고리 목록. `대분류(skincare/makeup/tools) → 소분류 id → 한글 이름`
 - `data/my-cosmetics.json` — 내가 가진 화장품. 카테고리와 같은 구조로, 소분류 id 아래에 제품 배열을 둔다.
 
 제품 항목 형식:

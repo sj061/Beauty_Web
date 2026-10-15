@@ -44,5 +44,12 @@
       "lip-gloss": "립글로스",
       "lip-liner": "립라이너"
     }
+  },
+  "tools": {
+    "name": "도구",
+    "subcategories": {
+      "puff": "퍼프",
+      "brow-razor": "눈썹칼"
+    }
   }
 }
