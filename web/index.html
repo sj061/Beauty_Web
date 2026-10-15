@@ -136,7 +136,7 @@ function renderControls(){
     gEl.append(chip(l, state.g===k, () => { state.g=k; renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
   [["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"],["sample","샘플"],["used-up","리뷰"]].forEach(([k,l]) =>
-    fEl.append(chip(l, state.f.has(k), () => { state.f.has(k)?state.f.delete(k):state.f.add(k); renderControls(); renderList(); })));
+    fEl.append(chip(l, state.f.has(k), () => { const TONE_KEYS=["코랄","핑크","굽굽"]; if (state.f.has(k)) state.f.delete(k); else { if (TONE_KEYS.includes(k)) TONE_KEYS.forEach(x => state.f.delete(x)); state.f.add(k); } renderControls(); renderList(); })));
 }
 
 function match(i){
