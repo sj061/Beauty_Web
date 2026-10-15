@@ -130,14 +130,16 @@ function chip(label, pressed, onclick){
   b.className = "chip"; b.type = "button"; b.textContent = label;
   b.setAttribute("aria-pressed", pressed); b.onclick = onclick; return b;
 }
-const EXCL = ["코랄","핑크","굽굽","sample"];  // 도구·기타와 함께, 이 중 하나만 켜진다
+const EXCL = ["코랄","핑크","굽굽","sample"];  // 이 중 하나만 켜진다
+// 대분류별로 같이 켤 수 없는 버튼
+const CONFLICT = {tools:EXCL, etc:EXCL, makeup:["sample"], skincare:["코랄","핑크","굽굽"]};
 function renderControls(){
   const gEl = document.getElementById("groups"); gEl.innerHTML = "";
   [["all","전체"], ...Object.keys(CATS).map(g=>[g,groupNames[g]])].forEach(([k,l]) =>
-    gEl.append(chip(l, state.g===k, () => { state.g=k; if (k==="tools"||k==="etc") EXCL.forEach(x => state.f.delete(x)); renderControls(); renderList(); })));
+    gEl.append(chip(l, state.g===k, () => { state.g=k; (CONFLICT[k]||[]).forEach(x => state.f.delete(x)); renderControls(); renderList(); })));
   const fEl = document.getElementById("filters"); fEl.innerHTML = "";
   [["코랄","코랄"],["핑크","핑크"],["굽굽","굽굽"],["sample","샘플"],["used-up","리뷰"]].forEach(([k,l]) =>
-    fEl.append(chip(l, state.f.has(k), () => { if (state.f.has(k)) state.f.delete(k); else { if (EXCL.includes(k)){ EXCL.forEach(x => state.f.delete(x)); if (state.g==="tools"||state.g==="etc") state.g="all"; } state.f.add(k); } renderControls(); renderList(); })));
+    fEl.append(chip(l, state.f.has(k), () => { if (state.f.has(k)) state.f.delete(k); else { if (EXCL.includes(k)) EXCL.forEach(x => state.f.delete(x)); if ((CONFLICT[state.g]||[]).includes(k)) state.g="all"; state.f.add(k); } renderControls(); renderList(); })));
 }
 
 function match(i){
