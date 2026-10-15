@@ -80,16 +80,6 @@
     ],
     "lip-care": [
       {
-        "name": "클리오 코팅 립 마스크 02 홍시",
-        "status": "in-use",
-        "openedAt": null,
-        "paoMonths": 12,
-        "expiresAt": "2028-09-02",
-        "useBy": "2028-09-02",
-        "price": null,
-        "store": "증정품"
-      },
-      {
         "name": "헤라 립 트리트먼트",
         "status": "in-use",
         "openedAt": null,
@@ -555,6 +545,17 @@
         "useBy": "2029-01-08",
         "price": 31000,
         "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "클리오 코팅 립 마스크 02 홍시",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-09-02",
+        "useBy": "2028-09-02",
+        "price": null,
+        "store": "증정품",
         "tone": null
       }
     ],
