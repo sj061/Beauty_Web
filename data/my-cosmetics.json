@@ -93,6 +93,30 @@
         "price": null,
         "store": "올리브영"
       }
+    ],
+    "lip-tint": [
+      {
+        "name": "웨이크메이크 볼드 립 블러 틴트 03 애프리시티",
+        "status": null,
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-03-16",
+        "useBy": "2029-03-16",
+        "price": null,
+        "store": "올리브영"
+      }
+    ],
+    "contour": [
+      {
+        "name": "에뛰드 쉐딩스틱",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null
+      }
     ]
   }
 }
