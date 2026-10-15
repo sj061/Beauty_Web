@@ -466,6 +466,17 @@
         "price": null,
         "store": null,
         "tone": null
+      },
+      {
+        "name": "뮤드 인스파이어 스키니 브로우 카라 B01 밀크티",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null,
+        "tone": null
       }
     ],
     "eyeshadow": [
@@ -633,6 +644,18 @@
         "useBy": "2029-04-21",
         "price": null,
         "store": "올리브영",
+        "tone": null
+      },
+      {
+        "name": "투쿨포스쿨 아트클래스 스머징 트임 라이너 14 네이키드",
+        "status": "in-use",
+        "openedAt": "2026-10-16",
+        "paoMonths": 6,
+        "expiresAt": null,
+        "useBy": "2027-04-16",
+        "price": 9600,
+        "store": "올리브영",
+        "memo": "제조일 2026-08-28",
         "tone": null
       }
     ],
@@ -965,6 +988,17 @@
         "useBy": "2028-12-20",
         "price": null,
         "store": "선물",
+        "tone": null
+      },
+      {
+        "name": "3CE 소프트 매트 립스틱 #머머링",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2027-09-26",
+        "useBy": "2027-09-26",
+        "price": 18900,
+        "store": "올리브영",
         "tone": null
       }
     ],
