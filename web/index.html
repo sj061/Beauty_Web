@@ -88,7 +88,7 @@ const TONE_COLOR = {"코랄":"var(--coral)","핑크":"var(--pink)","굽굽":"var
 const today = new Date(); today.setHours(0,0,0,0);
 const daysLeft = d => d ? Math.round((new Date(d+"T00:00:00") - today)/86400000) : null;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const won = n => n==null ? null : n.toLocaleString("ko-KR")+"원";
+const won = n => n==null ? null : "최저가 "+n.toLocaleString("ko-KR")+"원";
 function duePill(d){
   const n = daysLeft(d); if(n==null) return "";
   const cls = n<0 ? "crit" : n<=90 ? "crit" : n<=180 ? "warn" : "";
