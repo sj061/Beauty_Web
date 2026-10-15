@@ -52,5 +52,11 @@
       "puff": "퍼프",
       "brow-razor": "눈썹칼"
     }
+  },
+  "etc": {
+    "name": "기타",
+    "subcategories": {
+      "etc": "기타"
+    }
   }
 }

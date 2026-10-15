@@ -1209,5 +1209,19 @@
         "store": null
       }
     ]
+  },
+  "etc": {
+    "etc": [
+      {
+        "name": "덴티스테 구강 스프레이",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
+        "store": null
+      }
+    ]
   }
 }
