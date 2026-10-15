@@ -106,16 +106,6 @@
     ],
     "eyeliner": [
       {
-        "name": "하트퍼센트 도트 온 무드 펜슬 슬림 20 살몬베이지",
-        "status": "in-use",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": null,
-        "useBy": null,
-        "price": null,
-        "store": "올리브영"
-      },
-      {
         "name": "투크 워터프루프 슬림 아이라이너 #도화살몬",
         "status": "in-use",
         "openedAt": null,
@@ -233,6 +223,18 @@
         "expiresAt": "2029-01-08",
         "useBy": "2029-01-08",
         "price": 31000,
+        "store": "올리브영"
+      }
+    ],
+    "lip-liner": [
+      {
+        "name": "하트퍼센트 도트 온 무드 펜슬 슬림 20 살몬베이지",
+        "status": "in-use",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": null,
+        "useBy": null,
+        "price": null,
         "store": "올리브영"
       }
     ]
