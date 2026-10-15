@@ -2,8 +2,6 @@
   "skincare": {
     "name": "기초",
     "subcategories": {
-      "cleanser-1st": "1차 세안",
-      "cleanser-2nd": "2차 세안",
       "exfoliator": "각질제거제/필링",
       "toner": "토너/스킨",
       "toner-pad": "토너 패드",
@@ -17,6 +15,8 @@
       "mask-moisture": "보습",
       "mask-soothing": "진정",
       "mask-function": "기능성",
+      "cleanser-1st": "1차 세안",
+      "cleanser-2nd": "2차 세안",
       "wash-off-mask": "워시오프/슬리핑 팩",
       "sunscreen": "선케어",
       "lip-care": "립밤/립케어"
