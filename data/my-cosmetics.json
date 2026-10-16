@@ -1,40 +1,5 @@
 {
   "skincare": {
-    "toner": [
-      {
-        "name": "코스알엑스 더 6 펩타이드 스킨 부스터 세럼",
-        "status": "in-use",
-        "openedAt": "2026-10-15",
-        "paoMonths": 12,
-        "expiresAt": "2028-10-01",
-        "useBy": "2027-10-15",
-        "price": null,
-        "store": "올리브영",
-        "openedAtAssumed": true
-      },
-      {
-        "name": "라네즈 크림스킨",
-        "status": "in-use",
-        "openedAt": "2026-10-15",
-        "paoMonths": 12,
-        "expiresAt": "2027-10-09",
-        "useBy": "2027-10-09",
-        "price": null,
-        "store": null,
-        "openedAtAssumed": true
-      },
-      {
-        "name": "넘버즈인 보들보들 모공결 결부스팅 토너",
-        "status": "unopened",
-        "openedAt": null,
-        "paoMonths": null,
-        "expiresAt": "2029-03-10",
-        "useBy": "2029-03-10",
-        "price": null,
-        "store": null,
-        "sample": true
-      }
-    ],
     "toner-pad": [
       {
         "name": "토리든 다이브인 저분자 히알루론산 멀티 패드",
@@ -77,6 +42,41 @@
         "paoMonths": null,
         "expiresAt": "2029-03-08",
         "useBy": "2029-03-08",
+        "price": null,
+        "store": null,
+        "sample": true
+      }
+    ],
+    "toner": [
+      {
+        "name": "코스알엑스 더 6 펩타이드 스킨 부스터 세럼",
+        "status": "in-use",
+        "openedAt": "2026-10-15",
+        "paoMonths": 12,
+        "expiresAt": "2028-10-01",
+        "useBy": "2027-10-15",
+        "price": null,
+        "store": "올리브영",
+        "openedAtAssumed": true
+      },
+      {
+        "name": "라네즈 크림스킨",
+        "status": "in-use",
+        "openedAt": "2026-10-15",
+        "paoMonths": 12,
+        "expiresAt": "2027-10-09",
+        "useBy": "2027-10-09",
+        "price": null,
+        "store": null,
+        "openedAtAssumed": true
+      },
+      {
+        "name": "넘버즈인 보들보들 모공결 결부스팅 토너",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-03-10",
+        "useBy": "2029-03-10",
         "price": null,
         "store": null,
         "sample": true
