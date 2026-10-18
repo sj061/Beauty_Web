@@ -595,13 +595,14 @@
       },
       {
         "name": "유세린 울트라 센시티브 리페어 슈퍼 수르스 마스크",
-        "status": "unopened",
+        "status": "used-up",
         "openedAt": null,
         "paoMonths": null,
         "expiresAt": "2028-07-01",
         "useBy": "2028-07-01",
         "price": null,
-        "store": "올리브영"
+        "store": "올리브영",
+        "usedUpAt": "2026-10-18"
       },
       {
         "name": "유세린 울트라 센시티브 리페어 슈퍼 수르스 마스크",
