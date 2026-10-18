@@ -82,7 +82,7 @@
         "sample": true
       }
     ],
-    "essence": [
+    "serum": [
       {
         "name": "아벤느 이드랑스 에센스-인-로션",
         "status": "in-use",
@@ -93,9 +93,7 @@
         "price": null,
         "store": "올리브영",
         "openedAtAssumed": true
-      }
-    ],
-    "serum": [
+      },
       {
         "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
         "status": "in-use",
@@ -309,8 +307,8 @@
       },
       {
         "name": "유리아쥬 시카 데일리 인텐스 리페어 세럼",
-        "status": "unopened",
-        "openedAt": null,
+        "status": "in-use",
+        "openedAt": "2026-10-18",
         "paoMonths": null,
         "expiresAt": "2027-07-31",
         "useBy": "2027-07-31",
