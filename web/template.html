@@ -152,8 +152,8 @@ function match(i){
   if (state.f.has("sample") && !i.sample) return false;
   const st = [...state.f].filter(x => STATUS[x]); const tn = [...state.f].filter(x => !STATUS[x] && x!=="sample");
   const qUsed = state.q && ["다 씀","리뷰"].some(w => w.includes(state.q) || state.q.includes(w));
-  if (i.status==="used-up" && !st.includes("used-up") && !qUsed) return false;
-  if (st.length && !st.includes(i.status)) return false;
+  if (state.f.has("used-up")) { if (!(i.status==="used-up" || i.review)) return false; }  // 리뷰: 다 쓴 제품 + 후기 있는 제품
+  else if (i.status==="used-up" && !qUsed) return false;
   if (tn.length && !(i.tone||[]).some(t => tn.includes(t))) return false;
   return true;
 }
@@ -180,16 +180,17 @@ function renderList(){
     lastP = parent;
     html += `<section class="shelf${parent?" child":""}"><h3>${esc(CATS[g].subcategories[s])} <small class="num">${list.length}개</small></h3>`;
     for (const [name, units] of sorted){
-      const cnt = {}; units.filter(u => u.status!=="used-up").forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
+      const RV = state.f.has("used-up");
+      const cnt = {}; units.filter(u => u.status!=="used-up" && !RV).forEach(u => { const k = STATUS[u.status]||"상태 모름"; cnt[k]=(cnt[k]||0)+1; });
       const ns = units.filter(u => u.sample).length;
       const tones = [...new Set(units.flatMap(u => u.tone||[]))];
-      const nearest = units.filter(u=>u.status!=="used-up").map(u=>u.useBy).filter(Boolean).sort()[0];
+      const nearest = RV ? null : units.filter(u=>u.status!=="used-up").map(u=>u.useBy).filter(Boolean).sort()[0];
       html += `<details><summary>
         <div class="top"><span class="name">${esc(name)}${ns===units.length?` <span class="pill">샘플</span>`:""}</span>${units.length>1?`<span class="count num">×${units.length}</span>`:""}</div>
         <div class="meta">${Object.entries(cnt).map(([k,v])=>`<span>${k}${units.length>1?" "+v:""}</span>`).join(" · ")}${ns&&ns<units.length?` · <span>샘플 ${ns}</span>`:""}
           ${tones.map(t=>`<span class="dot" style="--c:${TONE_COLOR[t]||"var(--muted)"}">${esc(t)}</span>`).join("")}
           ${duePill(nearest)}</div></summary>
-        <ul class="units">${units.map(u => u.status==="used-up" ? `<li><span>${u.review ? esc(u.review) : "아직 후기가 없어요"}</span></li>` : `<li><b>${STATUS[u.status]||"상태 모름"}${u.sample?" · 샘플":""}</b>${
+        <ul class="units">${(RV ? units.slice(0,1) : units).map(u => (RV || u.status==="used-up") ? `<li><span>${u.review ? esc(u.review) : "아직 후기가 없어요"}</span></li>` : `<li><b>${STATUS[u.status]||"상태 모름"}${u.sample?" · 샘플":""}</b>${
           [u.status==="used-up"&&u.usedUpAt&&`다 쓴 날 ${u.usedUpAt}`, u.expiresAt&&`유통기한 ${u.expiresAt}`,
            u.status==="in-use"&&u.useBy&&`사용 기한 ${u.useBy}`, won(u.price), u.store, u.memo].filter(Boolean).map(x=>`<span class="num">${esc(x)}</span>`).join("")
           || "<span>추가 정보 없음</span>"}</li>`).join("")}</ul></details>`;
