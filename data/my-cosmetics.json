@@ -428,6 +428,17 @@
         "price": null,
         "store": null,
         "sample": true
+      },
+      {
+        "name": "제로이드 수딩 크림",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": null,
+        "expiresAt": "2029-02-26",
+        "useBy": "2029-02-26",
+        "price": null,
+        "store": null,
+        "sample": true
       }
     ],
     "mask-moisture": [
