@@ -108,8 +108,8 @@
       },
       {
         "name": "이니스프리 비타씨 그린티 엔자임 잡티 토닝 세럼 이엑스",
-        "status": "unopened",
-        "openedAt": null,
+        "status": "in-use",
+        "openedAt": "2026-11-05",
         "paoMonths": 12,
         "expiresAt": "2027-08-29",
         "useBy": "2027-08-29",
