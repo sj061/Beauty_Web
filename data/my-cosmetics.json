@@ -2222,8 +2222,8 @@
       },
       {
         "name": "KAI Pretty 눈썹칼",
-        "status": "unopened",
-        "openedAt": null,
+        "status": "in-use",
+        "openedAt": "2026-11-11",
         "paoMonths": null,
         "expiresAt": null,
         "useBy": null,
