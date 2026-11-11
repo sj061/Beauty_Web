@@ -933,14 +933,15 @@
     "sunscreen": [
       {
         "name": "구달 맑은 어성초 진정 수분 선크림",
-        "status": "in-use",
+        "status": "used-up",
         "openedAt": "2026-10-15",
         "paoMonths": 12,
         "expiresAt": "2028-11-27",
         "useBy": "2027-10-15",
         "price": 17500,
         "store": "올리브영",
-        "openedAtAssumed": true
+        "openedAtAssumed": true,
+        "usedUpAt": "2026-11-11"
       },
       {
         "name": "AHC 마스터즈 아쿠아 리치 선크림",
