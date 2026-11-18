@@ -784,11 +784,11 @@
       },
       {
         "name": "메이크프렘 PDRN 포어 클레이 클렌징 밀크",
-        "status": "unopened",
-        "openedAt": null,
+        "status": "in-use",
+        "openedAt": "2026-11-18",
         "paoMonths": 12,
         "expiresAt": "2028-12-08",
-        "useBy": "2028-12-08",
+        "useBy": "2027-11-18",
         "price": null,
         "store": null,
         "sample": true
