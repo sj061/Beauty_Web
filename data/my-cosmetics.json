@@ -1344,10 +1344,10 @@
         "status": "unopened",
         "openedAt": null,
         "paoMonths": null,
-        "expiresAt": null,
-        "useBy": null,
+        "expiresAt": "2028-11-05",
+        "useBy": "2028-11-05",
         "price": null,
-        "store": null,
+        "store": "올리브영",
         "tone": null
       },
       {
@@ -1355,10 +1355,10 @@
         "status": "unopened",
         "openedAt": null,
         "paoMonths": null,
-        "expiresAt": null,
-        "useBy": null,
+        "expiresAt": "2028-11-05",
+        "useBy": "2028-11-05",
         "price": null,
-        "store": null,
+        "store": "올리브영",
         "tone": null
       },
       {
