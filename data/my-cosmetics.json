@@ -956,14 +956,25 @@
       },
       {
         "name": "프롬리에 비건 이지에프 시카 워터 선앰플",
-        "status": "in-use",
+        "status": "used-up",
         "openedAt": "2026-10-15",
         "paoMonths": 12,
         "expiresAt": null,
         "useBy": "2027-10-15",
         "price": null,
         "store": "공구",
-        "openedAtAssumed": true
+        "openedAtAssumed": true,
+        "usedUpAt": "2026-11-21"
+      },
+      {
+        "name": "프롬리에 비건 이지에프 시카 워터 선앰플",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-01-20",
+        "useBy": "2028-01-20",
+        "price": null,
+        "store": "공구"
       },
       {
         "name": "헤라 유브이 프로텍터 멀티디펜스",
