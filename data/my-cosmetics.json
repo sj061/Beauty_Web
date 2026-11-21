@@ -944,6 +944,27 @@
         "usedUpAt": "2026-11-11"
       },
       {
+        "name": "구달 맑은 어성초 진정 수분 선크림",
+        "status": "in-use",
+        "openedAt": "2026-11-21",
+        "paoMonths": 12,
+        "expiresAt": "2028-10-31",
+        "useBy": "2027-11-21",
+        "price": null,
+        "store": null,
+        "openedAtAssumed": true
+      },
+      {
+        "name": "구달 맑은 어성초 진정 수분 선크림",
+        "status": "unopened",
+        "openedAt": null,
+        "paoMonths": 12,
+        "expiresAt": "2028-11-27",
+        "useBy": "2028-11-27",
+        "price": null,
+        "store": null
+      },
+      {
         "name": "AHC 마스터즈 아쿠아 리치 선크림",
         "status": "in-use",
         "openedAt": "2026-10-15",
