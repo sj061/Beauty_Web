@@ -950,8 +950,8 @@
         "paoMonths": 12,
         "expiresAt": "2028-10-31",
         "useBy": "2027-11-21",
-        "price": null,
-        "store": null,
+        "price": 17500,
+        "store": "올리브영",
         "openedAtAssumed": true
       },
       {
@@ -961,8 +961,8 @@
         "paoMonths": 12,
         "expiresAt": "2028-11-27",
         "useBy": "2028-11-27",
-        "price": null,
-        "store": null
+        "price": 17500,
+        "store": "올리브영"
       },
       {
         "name": "AHC 마스터즈 아쿠아 리치 선크림",
